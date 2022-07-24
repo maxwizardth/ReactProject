@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>30 Days Of React Challenge</title>
+    <style type="text/css">
+    	 body{background: #333}
+   input{padding:11px;width:20%;
+         border:solid #b7dbe0 6px;
+          border-radius:13px}
+
+    button{background:#aa4324;color:white;
+         border-radius:11px;width:38%;
+         padding:13px;margin-top:13px;
+         border:solid 2px #b7dbe0}
+  
+  .subscribeBox{background:white;padding:13px}
+.subscribeWrapper{background:#b7dbe0;
+                text-align:center;
+                padding:20px;
+                border-radius:12px}
+          
+    </style>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+
+
+   let inputElements=(<div><input placeholder='firstname'/>
+					   <input placeholder='lastname'/>
+					   <input placeholder='E-mail'/>
+					</div>)
+const subscribe=(<div className='subscribeBox'>
+					<div className='subscribeWrapper'>
+					<h3>SUBSCRIBE</h3>
+					<p>Sign up with your E-mail address to receive news and updates </p>
+                     {inputElements}
+                    <button>Subscribe</button>
+				 </div>
+				</div>)
+/*render the app .*/
+	let rootElement=document.getElementById('root')	
+	ReactDOM.render(subscribe,rootElement)
+    </script>
+  </body>
+</html>
