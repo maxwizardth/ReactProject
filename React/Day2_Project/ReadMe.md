@@ -1,4 +1,4 @@
-<img src='https://github.com/maxwizardth/ReactProject/blob/main/React/Media/hexadecimal.jpg' width=900 height=800>
+<img src='https://github.com/maxwizardth/ReactProject/blob/main/React/Media/hexadecimal.JPG' width=900 height=800>
 
 This is a Hexidecimal code generator designed usng React. 
 it generate different hexadecimal color codes and shows its colors
