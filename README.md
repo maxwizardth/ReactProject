@@ -1,26 +1,12 @@
 ## ReactProject
-  This is the list of different App built using React. 
-<table>
-  <tr>
-  <th>Days</th><th>Project</th>
-<tr>
-<td>Day1</td> <td>Subscribe Box</td>
-<tr>
-<tr>
-<td>Day2</td> <td>Hexadecimal color Generator</td>
-<tr>
-<tr>
-<td>Day3</td> <td>Number Generator</td>
-<tr>
-<tr>
-<td>Day4</td> <td>Loading..</td>
-<tr>
-<tr>
-<td>Day5</td> <td>Loading..</td>
-<tr>
-<tr>
-<td>Day6</td> <td>Loading..</td>
-<tr><tr>
-<td>Day7</td> <td>Loading..</td>
-<tr>
-</table>
+This is the list of different App built using React. 
+
+| Day |                                                                       Projects                                                                     |
+| ----- | :-------------------------------------------------------------------------------------------------------------------------------------------------: |
+| Day1 |  Subscribe Box                                                                                                                       |
+| Day2 |   Hexadecimal color Generator                                                                                                                      |
+| Day3 |    Number Generator                                                                                                                     |
+| Day4 |  Loading..                                                                                                                         |
+| Day5 |  Loading..                                                                                                                       |
+| Day6 |  Loading..                                                                                                                       |
+
