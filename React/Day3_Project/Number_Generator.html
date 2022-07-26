@@ -14,6 +14,15 @@
 
                 .fa{margin-left: 11px;color: white}
                 hr{border: 1px white solid}
+    
+               input{padding:11px;width:20%;
+         border:solid #b7dbe0 6px;
+          border-radius:13px;
+          text-align: center;}
+                  @media screen and (max-width:480px){
+  	       input{width:50%;
+              border-radius:23px}
+  }
     </style>
   </head>
 
@@ -85,15 +94,10 @@ let AllGrid=(props)=>{
 
 
 /*_--------------Creating footer component------------------------------*/
-const TextInput=()=>{
-	let placeholder=['firstname','lastname','E-mail']
-	let inputSyle={padding:'11px',width:'20%',border:'solid #b7dbe0 6px',
-					borderRadius:'13px'}
-	let allInput=placeholder.map((placeholderText)=>
-			    <input placeholder={placeholderText} style={inputSyle}/>)
-	return (<div className='container' style={{textAlign:'center'}}>
-			{allInput}</div>)
-					}   
+let inputElements=(<div><input placeholder='firstname'/>
+					   <input placeholder='lastname'/>
+					   <input placeholder='E-mail'/>
+					</div>)
 
 let buttonStlye={background:'#aa4324',color:'white',
 				 borderRadius:'11px',width:'38%',
@@ -103,7 +107,7 @@ const subscribe=(<div style={{background:'white',padding:'13px'}}>
 					<div style={{background:'#b7dbe0',textAlign:'center',padding:'20px',borderRadius:'12px'}}>
 					<h3>SUBSCRIBE</h3>
 					<p>Sign up with your E-mail address to receive news and updates </p>
-                     <TextInput/>
+                     {inputElements}
                     <button style={buttonStlye}>Subscribe</button>
 				 </div>
 				</div>)
