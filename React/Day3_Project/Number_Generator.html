@@ -94,24 +94,6 @@ let AllGrid=(props)=>{
 
 
 /*_--------------Creating footer component------------------------------*/
-let inputElements=(<div><input placeholder='firstname'/>
-					   <input placeholder='lastname'/>
-					   <input placeholder='E-mail'/>
-					</div>)
-
-let buttonStlye={background:'#aa4324',color:'white',
-				 borderRadius:'11px',width:'38%',
-				 padding:'13px',marginTop:'13px',
-				 border:'solid 2px #b7dbe0'}
-const subscribe=(<div style={{background:'white',padding:'13px'}}>
-					<div style={{background:'#b7dbe0',textAlign:'center',padding:'20px',borderRadius:'12px'}}>
-					<h3>SUBSCRIBE</h3>
-					<p>Sign up with your E-mail address to receive news and updates </p>
-                     {inputElements}
-                    <button style={buttonStlye}>Subscribe</button>
-				 </div>
-				</div>)
-
 
 /*_----------------------------------------------------------------*/
 const contact=(<div>
@@ -157,10 +139,9 @@ const footer=(<footer style={footerStyle}>
 
 /*embeding all components to the colorApp*/
 let colorApp=(<div>
-            {header}
-			<AllGrid number={300}/>
-			{subscribe}
-			{footer}
+              {header}
+	      <AllGrid number={300}/>	
+	      {footer}
 			
 		  </div>)
 /*render the app .*/
