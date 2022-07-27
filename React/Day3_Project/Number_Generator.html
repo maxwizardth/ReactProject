@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,8 +14,7 @@
 
                 .fa{margin-left: 11px;color: white}
                 hr{border: 1px white solid}
-    
-            
+ 
     </style>
   </head>
 
@@ -70,18 +70,20 @@ let typeNumber=(number)=>prime(number)?'red':number%2===0?'green':'yellow'
 let Grid=({number})=>{
 	let color=typeNumber(number)
 	const liStyle={background:color,color:'white',
-				   width:'10%',padding:'20px',
-				   fontSize:'30px',
+				   width:'40px',
+				   height:'40px',
+				   fontSize:'20px',
+				   padding:'20px',
 				   display: 'inline-block',
                    textAlign: 'center',
                    border: 'white solid 2px'
 				 }
-	return (<li className='grid' style={liStyle}>{number}</li>)}
+	return (<span className='grid' style={liStyle}>{number}</span>)}
 	          
 let AllGrid=(props)=>{
 	          const numberList=Array(props.number).fill(0).map((key,index)=>key+index)
 	          const allSpan=numberList.map((newNumber)=><Grid number={newNumber}/>)
-	          return (<ul>{allSpan}</ul>)
+	          return (<div style={{width: '100%',marginLeft: '2px'}}>{allSpan}</div>)
 } 
 
 
@@ -143,3 +145,4 @@ let colorApp=(<div>
     </script>
   </body>
 </html>
+
