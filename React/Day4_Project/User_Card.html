@@ -37,8 +37,8 @@ const userData={surname:'OLADEJO',
 			    		'MySQL']}
  const spanStyle={background:'#8ec0ff',color: 'white',
             margin: '3px',display: 'inline-block',
-            padding: '6px',border-radius:'24%',
-            font-size: '12px'} 					
+            padding: '6px',borderRadius:'24%',
+            fontSize: '12px'} 					
 const Skill=({skill})=><span style={spanStyle}>{skill}</span>
 const Skills=({skills})=>{
 	const skillsElement=skills.map((skill)=><Skill key={skill} skill={skill}/>)
