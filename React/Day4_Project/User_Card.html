@@ -9,11 +9,7 @@
     	body{background: #8ec0ff;
          border:15px solid transparent;
          margin:0;
-        border-image:url(Desert.jpg) 40% round;}
-        span{background:#8ec0ff;color: white;
-            margin: 3px;display: inline-block;
-            padding: 6px;border-radius:24%;
-            font-size: 12px}     
+        border-image:url(Desert.jpg) 40% round;}    
             h5{margin: 2px;} 
                 .fa{margin-left: 11px;color: white}
                
@@ -39,7 +35,11 @@ const userData={surname:'OLADEJO',
 			    skills:['HTML','CSS','Sass','JS','React','Numpy',
 			    		'SQL','Python','Pandas','Django','graphQL',
 			    		'MySQL']}
-const Skill=({skill})=><span>{skill}</span>
+ const spanStyle={background:'#8ec0ff',color: 'white',
+            margin: '3px'display: 'inline-block',
+            padding: '6px',border-radius:'24%',
+            font-size: '12px'} 					
+const Skill=({skill})=><span style={spanStyle}>{skill}</span>
 const Skills=({skills})=>{
 	const skillsElement=skills.map((skill)=><Skill key={skill} skill={skill}/>)
       return (<div>
@@ -55,6 +55,7 @@ const checkbox={height:'10px',
 			    }
 const imgStyle={width:'120px',height:'120px',
 		borderRadius:'50%'}
+		
 const header=(<div style={{padding:'12px',background:'white',margin:'11px'}}>
 				<img src={mypic} style={imgStyle} alt='mypicture'/>
 				<h5>{userData.surname} {userData.firstname}
