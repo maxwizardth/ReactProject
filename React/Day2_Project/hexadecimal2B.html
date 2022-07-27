@@ -63,26 +63,31 @@ let Div=()=>{
 	       
 /*generating the Hexadecimal color codes using array*/
 let divColor=HexaColor()
+
+
 /*creating a style of the div that will has the color codes generated as background*/
-const divStyle={background:divColor,
-				border:'white solid 2px',
-				color:'white',
-				width:'80px',
-				margin:'1px',
-				fontSize:'13px',
-				display:'inline-block',
-				textAlign:'center'}
+const divStyle={background:color,
+        border:'white solid 2px',
+        color:'white',
+        margin:'1px',
+        width:'70px',
+        fontSize:'10px',
+        display:'inline-block',
+        textAlign:'center'}
 /*creating the div element that has background and text to be the color codes*/
-return (<div style={divStyle} className='container'>
-            <h2>{divColor}</h2>
-          </div>)}
+const div=(<div style={divStyle} className='container'>
+            <h2>{color}</h2>
+          </div>)
+return div}
+/*_----------------------------------------------------------------*/
+
 
 /*_----------------------------------------------------------------*/
 /*creating the functional components that create as many div color as we wish styling it.*/
 const Alldiv=(props)=>{
 	let divList=Array(props.number).fill(0)
     let  allDivElement=(divList.map((div,key)=><Div key={key} />))
-    return (<div className='container' style={{padding:'2px 20px 10px 20px'}}>
+    return (<div className='container' style={{padding:'2px'}}>
     	     {allDivElement}</div>)
 }
 
