@@ -33,12 +33,6 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
 
-
-
-
-
-
-
 const userData={surname:'OLADEJO',
 				firstname:'ABDULLLAHI',
 			    job:'Junior Developer',
@@ -50,18 +44,18 @@ const Skill=({skill})=><span>{skill}</span>
 const Skills=({skills})=>{
 	const skillsElement=skills.map((skill)=><Skill key={skill} skill={skill}/>)
       return (<div>
-      				<hr/>
-      				<h4>SKILLS</h4>
-      				{skillsElement}
+      		<hr/>
+      		h4>SKILLS</h4>
+      		{skillsElement}
       		 </div>)}
   const mypic='IMG_20200123_131233_4.jpg'
 const checkbox={height:'10px',
-				width:'10px',
-				borderRadius:'100%',
-				clipPath:'circle(50% at 50% 50%)'
+		width:'10px',
+		borderRadius:'100%',
+		clipPath:'circle(50% at 50% 50%)'
 			    }
 const imgStyle={width:'120px',height:'120px',
-				borderRadius:'50%'}
+		borderRadius:'50%'}
 const header=(<div style={{padding:'12px',background:'white',margin:'11px'}}>
 				<img src={mypic} style={imgStyle} alt='mypicture'/>
 				<h5>{userData.surname} {userData.firstname}
@@ -131,10 +125,10 @@ const footer=(<footer style={footerStyle}>
        </footer>)
 
 const app=(<div>
-			{header1}
-			{header}
-			{footer}
-			</div>)
+		{header1}
+		{header}
+		{footer}
+	   </div>)
 const root=document.getElementById('root')
 ReactDOM.render(app,root)
     </script>
