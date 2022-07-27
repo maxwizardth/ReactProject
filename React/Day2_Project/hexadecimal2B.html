@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>30 Days Of React Challenge</title>
+    <style type="text/css">
+    	body{background: #8ec0ff;
+         border:15px solid transparent;
+         margin:0;
+        border-image:url(Desert.jpg) 45% round;}
+                .fa{margin-left: 11px;color: white}
+    </style>
+  </head>
+
+  <body>
+    <div id="root"></div>
+     
+    <script crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"> 
+    </script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      
+/*creating the header components and styling it.*/
+let headerStyle={background:'url(Desert.jpg)',
+				color:'white',
+				paddingLeft:'3px',
+				margin:'0px'}
+let Header=(props)=>(
+	<div style={headerStyle}>
+		<h2 style={{textAlign:'center',paddingTop:'11px'}}>30Days Of React Project</h2>
+		<div>
+		<div style={{padding:'9px'}}>
+		<h3>{props.projectTitle}</h3>
+	    {props.projectInfo}
+		</div>
+		</div>
+	</div>
+	)
+
+let headerInfo=(<p>'The following shows different Hexadecimal 
+		codes and their respective color result.
+		copy the best color codes for your web. <br/>
+		<b>Note:</b> it generate different codes on reload'</p>)
+let header=<Header projectTitle='Day1: Hexadecimal color Generator' projectInfo={headerInfo}/>
+
+/*_----------------------------------------------------------------*/
+/*creating the color Div functional components and styling it.*/
+
+const HexaColor=()=>{
+	let digit='1234567890abcdef'
+	const color=[1,2,3,4,5,6].reduce((prev,curr)=>
+prev+=digit[Math.floor(Math.random()*digit.length)],'#')
+	
+	return color}
+
+let Div=()=>{
+	       
+/*generating the Hexadecimal color codes using array*/
+let divColor=HexaColor()
+/*creating a style of the div that will has the color codes generated as background*/
+const divStyle={background:divColor,
+				border:'white solid 2px',
+				color:'white',
+				width:'80px',
+				margin:'1px',
+				fontSize:'13px',
+				display:'inline-block',
+				textAlign:'center'}
+/*creating the div element that has background and text to be the color codes*/
+return (<div style={divStyle} className='container'>
+            <h2>{divColor}</h2>
+          </div>)}
+
+/*_----------------------------------------------------------------*/
+/*creating the functional components that create as many div color as we wish styling it.*/
+const Alldiv=(props)=>{
+	let divList=Array(props.number).fill(0)
+    let  allDivElement=(divList.map((div,key)=><Div key={key} />))
+    return (<div className='container' style={{padding:'2px 20px 10px 20px'}}>
+    	     {allDivElement}</div>)
+}
+
+/*_----------------------------------------------------------------*/
+const contact=(<div>
+                <h5>Call Hours: 9am-9pm (Mon-Fri)</h5>
+                <span><a href="https://">
+                    <i className="fa fa-phone logo" aria-hidden="true">+2349153036869</i>
+                </a></span>
+                <span><a href="https://">
+                   <i className="fa fa-envelope logo" aria-hidden="true">abdullahioladejo1@gmail.com</i>
+                 </a></span>
+               </div>)
+
+const footerLogo=( <p>
+                    <a href="https://web.facebook.com/abdullahi.oladejo.10">
+                    <i className="fa fa-facebook-square logo" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://wa.me/"><i className="fa fa-whatsapp logo" aria-hidden="true"></i>
+                    </a>
+      				<a href="https://twitter.com/oladejoabdulla7">
+      				<i className="fa fa-twitter logo" aria-hidden="true"></i>
+      				</a>
+                    <a href="https://www.instagram.com/maxwizardth/">
+                    <i className="fa fa-instagram logo" aria-hidden="true"></i>
+                    </a>
+      				<a href="https://linkedIn.com/"><i className="fa fa-linkedin-square logo" aria-hidden="true">
+      				</i>
+      				</a>
+			       <a href="https://github.com/maxwizardth">
+			       <i className="fa fa-github logo" aria-hidden="true"></i>
+			       </a><br/>
+				   <span id="copy">
+				      <small>Copyright© youngscientist|Designed by Maxwizard</small>
+				    </span>
+                  </p>)
+const footerStyle={textAlign: 'center',color:'white'}
+const footer=(<footer style={footerStyle}>
+                <h2>Connect with Us<hr/></h2>
+			    {contact}
+			    {footerLogo}
+
+			 </footer>)
+
+
+/*embeding all components to the colorApp*/
+let colorApp=(<div>
+              {header}
+	      <Alldiv number={31}/>
+	      {footer}	
+	   </div>)
+/*render the app .*/
+	let dom=document.getElementById('root')	
+	ReactDOM.render(colorApp,dom)
+
+    </script>
+  </body>
+</html>
