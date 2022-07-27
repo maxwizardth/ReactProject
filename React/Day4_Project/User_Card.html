@@ -65,8 +65,9 @@ class Header extends React.Component{
 class Skills extends React.Component{
 	render(){
 
-	const spanStyle={background:'#8ec0ff',
-				color: 'white',
+	const spanStyle={
+		background:'#8ec0ff',
+		color: 'white',
             	margin:'3px',
             	display:'inline-block',
             	padding:'6px',
@@ -75,9 +76,9 @@ class Skills extends React.Component{
 	const skillsElement=this.props.skills.map((skill)=>
 		<span key={skill} style={spanStyle}>{skill}</span>)
       	return (<div>
-      				<hr/>
-      				<h4>SKILLS</h4>
-      				{skillsElement}
+      		   <hr/>
+      		   <h4>SKILLS</h4>
+      		   {skillsElement}
       		 </div>)
 	}
 }
@@ -94,19 +95,19 @@ class UserCard extends React.Component{
 			    }
 
         const imgStyle={width:'120px',
-        				height:'120px',
-						borderRadius:'50%'}
-		const divStyle={padding:'12px',
-						background:'white',
-						margin:'11px'}
+        		height:'120px',
+			borderRadius:'50%'}
+	const divStyle={padding:'12px',
+			background:'white',
+			margin:'11px'}
 
-		return (<div style={divStyle}>
-				<img src={mypic} style={imgStyle} alt='mypicture'/>
-				<h5>{surname} {firstname}
-				<input type="checkbox" style={checkboxStyle} checked readOnly/></h5>
-				<small>{job}, {country}</small>
-				<Skills skills={skills} />
-			</div>)
+	return (<div style={divStyle}>
+		  <img src={mypic} style={imgStyle} alt='mypicture'/>
+		  <h5>{surname} {firstname}
+		  <input type="checkbox" style={checkboxStyle} checked readOnly/></h5>
+		  <small>{job}, {country}</small>
+		  <Skills skills={skills} />
+	       </div>)
 
 	}
 }
@@ -120,9 +121,8 @@ class UserCard extends React.Component{
 class Footer extends React.Component{
 	render(){
 		const footerStyle={
-					textAlign: 'center',
-					
-					color:'white'}
+				textAlign: 'center',
+				color:'white'}
 
 		const contact=(<div>
                 <h5>Call Hours: 9am-9pm (Mon-Fri)</h5>
@@ -173,16 +173,15 @@ class Footer extends React.Component{
 /*_____________creating the App component__________________________*/
 class App extends React.Component{
 	render(){
-
-		const userData={surname:'OLADEJO',
-				firstname:'ABDULLLAHI',
-			    job:'Junior Developer',
-				country:'Nigeria',
-			    skills:['HTML','CSS','Sass',
-			    		'JS','React','Numpy',
-			    		'SQL','Python','Pandas',
-			    		'Django','graphQL',
-			    		'MySQL']}
+          const userData={surname:'OLADEJO',
+			  firstname:'ABDULLLAHI',
+			  job:'Junior Developer',
+			  country:'Nigeria',
+			  skills:['HTML','CSS','Sass',
+			    	 'JS','React','Numpy',
+			    	  'SQL','Python','Pandas',
+			    	  'Django','graphQL',
+			    	  'MySQL']}
 
 
 		return(<div>
