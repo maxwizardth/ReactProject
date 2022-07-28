@@ -6,13 +6,13 @@ It has four files named
 3. Hexadecimal2A
 4. Hexadecimal2B
 
-Hexadecimal1A:this was built using functional components with CSS without background pictures.
+**Hexadecimal1A:** this was built using functional components with CSS without background pictures.
 
-Hexadecimal1B: this was built using functional components with CSS without background
+**Hexadecimal1B:** this was built using functional components with CSS without background
 
-Hexadecimal2A: was built using functional components with CSS without background
+**Hexadecimal2A:** was built using functional components with CSS without background
 
-Hexadecimal2B: was built using functional components with CSS without background
+**Hexadecimal2B:** was built using functional components with CSS without background
 
 In summary you can build your app base on functional components or class components. 
 
