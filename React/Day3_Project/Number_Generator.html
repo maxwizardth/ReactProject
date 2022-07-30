@@ -28,75 +28,38 @@
     </script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
-      
+  
 /*creating the header components and styling it.*/
-let headerStyle={background:'url("Desert.jpg")',
+const myImage="Desert.jpg"
+class Header extends React.Component{
+  render(){
+  	const headerStyle={background:`url(${myImage})`,
 				color:'white',
-				paddingLeft:'3px',
+				padding:'5px 0px 3px 18px',
 				margin:'0px'}
-let Header=(props)=>(
-	<div style={headerStyle}>
-		<h2 style={{textAlign:'center',paddingTop:'11px'}}>30Days Of React Project</h2>
-		<div>
-		<div style={{padding:'9px'}}>
-		<h3>{props.projectTitle}</h3>
-	    {props.projectInfo}
-		</div>
-		</div>
-	</div>
-	)
-
-let headerInfo=(<p>The following shows different numbers and their categories<br/>
-					<b>Red means Prime</b><br/>
-					<b>Green means even</b><br/>
-					<b>Yellow means odd</b>
-					</p>)
-let header=<Header projectTitle='Day3: Number Generator' projectInfo={headerInfo}/>
-
-  function prime(number) {
-    
-    var isPrime=number<2?false:true
-    for (var factor=Math.ceil(Math.sqrt(number));factor>1; factor--){
-         if(number%factor===0 && number!==2){
-          isPrime=false;
-          break}        
-         }
-
-    return isPrime
+    const {title,info}=this.props
+        const h2Style={textAlign:'center',
+                marginTop:'3px'}
+    return (<div style={headerStyle}>
+              <h2 style={h2Style}>
+               30Days Of React Project
+              </h2>                    
+              h3>{title}</h3>
+              {info}   
+           </div>)
   }
+}
 
-
-let typeNumber=(number)=>prime(number)?'red':number%2===0?'green':'yellow'
-let Grid=({number})=>{
-	let color=typeNumber(number)
-	const liStyle={background:color,color:'white',
-				   width:'40px',
-				   height:'40px',
-				   fontSize:'20px',
-				   padding:'20px',
-				   display: 'inline-block',
-                   textAlign: 'center',
-                   border: 'white solid 2px'
-				 }
-	return (<span className='grid' style={liStyle}>{number}</span>)}
-	          
-let AllGrid=(props)=>{
-	          const numberList=Array(props.number).fill(0).map((key,index)=>key+index)
-	          const allSpan=numberList.map((newNumber)=><Grid number={newNumber}/>)
-	          return (<div style={{width: '100%',marginLeft: '2px'}}>{allSpan}</div>)
-} 
-
-
-/*_--------------Creating footer component------------------------------*/
-
-/*_----------------------------------------------------------------*/
+/*creating Footer component*/
+class Footer extends React.Component{
+render(){
 const contact=(<div>
                 <h5>Call Hours: 9am-9pm (Mon-Fri)</h5>
                 <span><a href="https://">
                     <i className="fa fa-phone logo" aria-hidden="true">+2349153036869</i>
                 </a></span>
                 <span><a href="https://">
-                   <i className="fa fa-envelope logo" aria-hidden="true">abdullahioladejo1@gmail.com</i>
+                   <i className="fa fa-envelope logo" aria-hidden="true"> abdullahioladejo1@gmail.com</i>
                  </a></span>
                </div>)
 
@@ -106,41 +69,121 @@ const footerLogo=( <p>
                     </a>
                     <a href="https://wa.me/"><i className="fa fa-whatsapp logo" aria-hidden="true"></i>
                     </a>
-      				<a href="https://twitter.com/oladejoabdulla7">
-      				<i className="fa fa-twitter logo" aria-hidden="true"></i>
-      				</a>
+              <a href="https://twitter.com/oladejoabdulla7">
+              <i className="fa fa-twitter logo" aria-hidden="true"></i>
+              </a>
                     <a href="https://www.instagram.com/maxwizardth/">
                     <i className="fa fa-instagram logo" aria-hidden="true"></i>
                     </a>
-      				<a href="https://linkedIn.com/"><i className="fa fa-linkedin-square logo" aria-hidden="true">
-      				</i>
-      				</a>
-			       <a href="https://github.com/maxwizardth">
-			       <i className="fa fa-github logo" aria-hidden="true"></i>
-			       </a><br/>
-				   <span id="copy">
-				      <small>Copyright© youngscientist|Designed by Maxwizard</small>
-				    </span>
+              <a href="https://linkedIn.com/"><i className="fa fa-linkedin-square logo" aria-hidden="true">
+              </i>
+              </a>
+             <a href="https://github.com/maxwizardth">
+             <i className="fa fa-github logo" aria-hidden="true"></i>
+             </a><br/>
+           <span id="copy">
+              <small>Copyright© all reserved by Maxwizard</small>
+            </span>
                   </p>)
-const footerStyle={textAlign: 'center',color:'white'}
-const footer=(<footer style={footerStyle}>
+        return (<footer style={{textAlign:'center',
+        			color:'white',
+        			background:'#0588b0',
+        			padding:'5px'}}>
                 <h2>Connect with Us<hr/></h2>
-			    {contact}
-			    {footerLogo}
+               {contact}
+               {footerLogo}
+              </footer>)}
+          }
 
-			 </footer>)
 
+
+/*_----------------------------------------------------------------*/
+  function prime(number) {
+    
+    var isPrime=number<2?false:true
+    for (var factor=Math.ceil(Math.sqrt(number));factor>1; factor--){
+         if(number%factor===0 && number!==2){
+          isPrime=false;
+          break}        
+         }
+    return isPrime
+  }
+
+const ColorNumber=(number)=>prime(number)?'red':number%2===0?'green':'yellow'
+const Grid=({number})=>{
+  const color=ColorNumber(number)
+  /*creating a style of the div that will has the color codes generated as background*/
+const divStyle={background:color,
+        border:'white solid 2px',
+        color:'white',
+        margin:'1px',
+        width:'70px',
+        fontSize:'10px',
+        display:'inline-block',
+        textAlign:'center'}
+  return (<div style={divStyle} className='container'>
+            <h2>{number}</h2>
+          </div>)
+          }
+            
+/*creating the functional components that create as many Grids color as we wish styling it.*/
+const AllGrid=(props)=>{
+            const numberList=Array(100).fill(0).map((key,index)=>props.start+index)
+            const allGrid=numberList.map((eachNumber)=>
+              <Grid key={eachNumber} number={eachNumber}/>)
+           
+            return (<div className='container' 
+            style={{padding:'2px',textAlign:'center'}}>
+            {allGrid}
+         </div>)
+} 
+
+
+class Button extends React.Component{ 
+      render(){
+         const buttonStyle={
+            background:'#0588b0',
+            color:'white',
+            width:'120px',
+            padding:'11px',
+            pointer:'corsor',
+            margin:'9px',
+            borderRadius:'14px',
+            border:'solid 3px white'}
+         return (
+         <button style={buttonStyle} onClick={this.props.click}>{this.props.text}</button>)}
+   }
 
 /*embeding all components to the colorApp*/
-let colorApp=(<div>
-              {header}
-	      <AllGrid number={300}/>	
-	      {footer}
-			
-		  </div>)
-/*render the app .*/
-	let dom=document.getElementById('root')	
-	ReactDOM.render(colorApp,dom)
+class NumberApp extends React.Component{ 
+   state={start:0}
+   Next=()=>this.setState({start:this.state.start+100})
+   Previous=()=>this.setState({start:this.state.start-100})
+   render(){
+
+    const headerInfo=(<p>
+                       <b>Red means Prime<br/>
+                        Green means even<br/>
+                        Yellow means odd<br/>
+    click the buttons to get Next or Previous set of numbers</b>. <br/>
+    <b>Note:All prime numbers are also odd except 2</b> </p>)
+    const headerTitle='Day3: Number Generator'
+
+      return (<div>
+      {<Header title={headerTitle} info={headerInfo}/>}
+      <div style={{background:'white'}}>
+      {<AllGrid start={this.state.start}/>}
+          <div style={{textAlign:'center'}}>
+      <Button click={this.Previous} text='Previous'/>
+      <Button click={this.Next} text='Next Set'/>
+      </div>
+      </div>
+      {<Footer/>}
+      </div>
+      )}
+  }
+
+ReactDOM.render(<NumberApp/>,document.getElementById('root'))
 
     </script>
   </body>
