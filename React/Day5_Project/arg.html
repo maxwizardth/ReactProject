@@ -1,39 +1,201 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>array</title>
-</head>
-<body>
-	<h2 id="demo"></h2>
-	<h2 id="demi"></h2>
-	<h2 id="term"></h2>
-<script>
-	
-      var a = prompt("what is the first term","");
-      var d=prompt("what is the common difference","");
-      var c=prompt("find the value of what term")
-       var n=prompt("list the first what terms of the sequence?",""); 
-       var s=prompt("sum of first what terms?")
-        for (var i = 1;i <=n;i++ ) {function fun(a,n,d)
-        	{return eval(a+"+"+(i-1)*d);
-       	 }
-       	 
-       var s=document.getElementById('demo').innerHTML+=fun(a,n,d) +" ";
-        function sum(a,s,d)
-        {
-       	 	return (s*(eval(2*a+"+"+(s-1)*d))/2);
-       	 }
-       	 var s=document.getElementById('demi').innerHTML="the sum of the first"+" "+n+"<sup>"+"th"+"</sup>"+" "+ "term is"+" " + sum(a,n,d);
-       	 function term(a,c,d)
-        	{return eval(a+"+"+(c-1)*d);
-       	 }
-       	if (term(a,c,d)===NaN) {document.getElementById('term').innerHTML="error! what you input is not a number"}
-       		else
-       	 var y=document.getElementById('term').innerHTML="the"+" "+c+"<sup>"+"th"+"</sup>"+" "+ "term is"+" "+ term(a,c,d);
-       	}
-       	
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>30 Days Of React Challenge</title>
+    <style type="text/css">
+    	body{background: #8ec0ff;
+         border:15px solid transparent;
+         margin:0;
+        border-image:url(Desert.jpg) 40% round;}    
+            h5{margin: 2px;} 
+                .fa{margin-left: 11px;color: white}
+               
+    
+    </style>
+  </head>
 
-      
-</script>
-</body>
+  <body>
+    <div id="root"></div>
+     
+    <script crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"> 
+    </script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+
+const mypic='IMG_20200123_131233_4.jpg'
+const myImage = 'Desert.jpg'
+
+
+/*creating the header components and styling it.*/
+
+class Header extends React.Component{
+	render(){
+		const {title,info}=this.props
+	    const headerStyle={
+	    	background:`url(${myImage})`,
+            color:'white',
+        	paddingLeft:'3px',
+        	margin:'0px'}
+        const h2Style={textAlign:'center',
+        				paddingTop:'11px'}
+		return (<div style={headerStyle}>
+              <h2 style={h2Style}>
+               30Days Of React Project
+              </h2>
+              <div>
+                 <div style={{padding:'9px'}}>
+                   <h3>{title}</h3>
+                    <p>{info}</p>
+                 </div>
+              </div>
+             </div>)
+
+	}
+}
+
+
+/*________________card component_________________________________________*/
+/*creating Skills component*/
+class Skills extends React.Component{
+	render(){
+
+	const spanStyle={
+		background:'#8ec0ff',
+		color: 'white',
+            	margin:'3px',
+            	display:'inline-block',
+            	padding:'6px',
+            	borderRadius:'24%',
+            	fontSize: '12px'}	
+	const skillsElement=this.props.skills.map((skill)=>
+		<span key={skill} style={spanStyle}>{skill}</span>)
+      	return (<div>
+      		   <hr/>
+      		   <h4>SKILLS</h4>
+      		   {skillsElement}
+      		 </div>)
+	}
+}
+
+		    		
+
+class UserCard extends React.Component{
+	render(){
+		const {surname,firstname,job,country,skills}=this.props.data
+		const checkboxStyle={height:'10px',
+				width:'10px',
+				borderRadius:'100%',
+				clipPath:'circle(50% at 50% 50%)'
+			    }
+
+        const imgStyle={width:'120px',
+        		height:'120px',
+			borderRadius:'50%'}
+	const divStyle={padding:'12px',
+			background:'white',
+			margin:'11px'}
+
+	return (<div style={divStyle}>
+		  <img src={mypic} style={imgStyle} alt='mypicture'/>
+		  <h5>{surname} {firstname}
+		  <input type="checkbox" style={checkboxStyle} checked readOnly/></h5>
+		  <small>{job}, {country}</small>
+		  <Skills skills={skills} />
+	       </div>)
+
+	}
+}
+/*________________card component end________________________*/
+
+
+
+
+/*________________footer component start________________________*/
+
+class Footer extends React.Component{
+	render(){
+		const footerStyle={
+				textAlign: 'center',
+				color:'white'}
+
+		const contact=(<div>
+                <h5>Call Hours: 9am-9pm (Mon-Fri)</h5>
+                <span><a href="https://a">
+                    <i className="fa fa-phone logo" aria-hidden="true">+2349153036869</i>
+                </a></span>
+                <span><a href="https://">
+                   <i className="fa fa-envelope logo" aria-hidden="true">abdullahioladejo1@gmail.com</i>
+                 </a></span>
+               </div>)
+
+        const footerLogo=(
+        	 <p>
+                <a href="https://web.facebook.com/abdullahi.oladejo.10">
+                <i className="fa fa-facebook-square logo" aria-hidden="true"></i>
+                </a>
+                <a href="https://wa.me/"><i className="fa fa-whatsapp logo" aria-hidden="true"></i>
+                </a>
+                <a href="https://twitter.com/oladejoabdulla7">
+                <i className="fa fa-twitter logo" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.instagram.com/maxwizardth/">
+                <i className="fa fa-instagram logo" aria-hidden="true"></i>
+                </a>
+                <a href="https://linkedIn.com/"><i className="fa fa-linkedin-square logo" aria-hidden="true">
+                </i>
+                </a>
+                <a href="https://github.com/maxwizardth">
+                <i className="fa fa-github logo" aria-hidden="true"></i>
+                </a><br/>
+                <span id="copy">
+              <small>Copyright© youngscientist|Designed by Maxwizard</small>
+              </span>
+            </p>)
+
+    return (<footer style={footerStyle}>
+                <h2>Connect with Us<hr/></h2>
+                {contact}
+                {footerLogo}
+             </footer>)
+	}
+}
+
+/*________________Footer component end________________________*/
+
+
+
+/*_____________creating the App component__________________________*/
+class App extends React.Component{
+	render(){
+          const userData={surname:'OLADEJO',
+			  firstname:'ABDULLLAHI',
+			  job:'Junior Developer',
+			  country:'Nigeria',
+			  skills:['HTML','CSS','Sass',
+			    	 'JS','React','Numpy',
+			    	  'SQL','Python','Pandas',
+			    	  'Django','graphQL',
+			    	  'MySQL']}
+
+
+		return(<div>
+			<Header title='Day4: User Card'
+			 info='The following shows little information about the author'/>
+			<UserCard data={userData}/>
+			<Footer/>
+			</div>)
+		}
+		}
+const root=document.getElementById('root')
+ReactDOM.render(<App />,root)
+
+    </script>
+  </body>
 </html>
+
