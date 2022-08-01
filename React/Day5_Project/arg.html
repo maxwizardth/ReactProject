@@ -32,169 +32,168 @@ const mypic='IMG_20200123_131233_4.jpg'
 const myImage = 'Desert.jpg'
 
 
-/*creating the header components and styling it.*/
+class Country extends Component{
+ render(){
+ 	const AllKeys=['name','population',
+ 					'capital','flags',
+ 					'continents','maps',
+ 					'region','languages',
+ 					'independent','currencies',
+ 					'coatOfArms']
+ 	const newCountry=data.sort((a,b)=>b.population-a.population).map((country)=>{
+ 		const m=AllKeys.reduce((init,key)=>{
+ 			return {...init,[key]:country[key]}},{})
+
+      return m})
+ 	console.log(newCountry)
+ 	return (<div>dfg</div>)
+		   }
+}
+
 
 class Header extends React.Component{
-	render(){
-		const {title,info}=this.props
-	    const headerStyle={
-	    	background:`url(${myImage})`,
-            color:'white',
-        	paddingLeft:'3px',
-        	margin:'0px'}
+  render(){
+  	const headerStyle={background:`url(${myImage})`,
+				color:'white',
+				padding:'5px 0px 3px 18px',
+				margin:'0px'}
+    const {title,info}=this.props
         const h2Style={textAlign:'center',
-        				paddingTop:'11px'}
-		return (<div style={headerStyle}>
+                marginTop:'3px'}
+    return (<div style={headerStyle}>
               <h2 style={h2Style}>
-               30Days Of React Project
-              </h2>
-              <div>
-                 <div style={{padding:'9px'}}>
+               Welcom to 30Days Of React Challenge
+              </h2> 
+                 
                    <h3>{title}</h3>
-                    <p>{info}</p>
-                 </div>
-              </div>
+                    {info}
+                 
+        
              </div>)
 
-	}
+  }
 }
 
 
-/*________________card component_________________________________________*/
-/*creating Skills component*/
-class Skills extends React.Component{
-	render(){
-
-	const spanStyle={
-		background:'#8ec0ff',
-		color: 'white',
-            	margin:'3px',
-            	display:'inline-block',
-            	padding:'6px',
-            	borderRadius:'24%',
-            	fontSize: '12px'}	
-	const skillsElement=this.props.skills.map((skill)=>
-		<span key={skill} style={spanStyle}>{skill}</span>)
-      	return (<div>
-      		   <hr/>
-      		   <h4>SKILLS</h4>
-      		   {skillsElement}
-      		 </div>)
-	}
-}
-
-		    		
-
-class UserCard extends React.Component{
-	render(){
-		const {surname,firstname,job,country,skills}=this.props.data
-		const checkboxStyle={height:'10px',
-				width:'10px',
-				borderRadius:'100%',
-				clipPath:'circle(50% at 50% 50%)'
-			    }
-
-        const imgStyle={width:'120px',
-        		height:'120px',
-			borderRadius:'50%'}
-	const divStyle={padding:'12px',
-			background:'white',
-			margin:'11px'}
-
-	return (<div style={divStyle}>
-		  <img src={mypic} style={imgStyle} alt='mypicture'/>
-		  <h5>{surname} {firstname}
-		  <input type="checkbox" style={checkboxStyle} checked readOnly/></h5>
-		  <small>{job}, {country}</small>
-		  <Skills skills={skills} />
-	       </div>)
-
-	}
-}
-/*________________card component end________________________*/
-
-
-
-
-/*________________footer component start________________________*/
 
 class Footer extends React.Component{
-	render(){
-		const footerStyle={
-				textAlign: 'center',
-				color:'white'}
-
-		const contact=(<div>
+render(){
+const contact=(<div>
                 <h5>Call Hours: 9am-9pm (Mon-Fri)</h5>
-                <span><a href="https://a">
+                <span><a href="https://">
                     <i className="fa fa-phone logo" aria-hidden="true">+2349153036869</i>
                 </a></span>
                 <span><a href="https://">
-                   <i className="fa fa-envelope logo" aria-hidden="true">abdullahioladejo1@gmail.com</i>
+                   <i className="fa fa-envelope logo" aria-hidden="true"> abdullahioladejo1@gmail.com</i>
                  </a></span>
                </div>)
 
-        const footerLogo=(
-        	 <p>
-                <a href="https://web.facebook.com/abdullahi.oladejo.10">
-                <i className="fa fa-facebook-square logo" aria-hidden="true"></i>
-                </a>
-                <a href="https://wa.me/"><i className="fa fa-whatsapp logo" aria-hidden="true"></i>
-                </a>
-                <a href="https://twitter.com/oladejoabdulla7">
-                <i className="fa fa-twitter logo" aria-hidden="true"></i>
-                </a>
-                <a href="https://www.instagram.com/maxwizardth/">
-                <i className="fa fa-instagram logo" aria-hidden="true"></i>
-                </a>
-                <a href="https://linkedIn.com/"><i className="fa fa-linkedin-square logo" aria-hidden="true">
-                </i>
-                </a>
-                <a href="https://github.com/maxwizardth">
-                <i className="fa fa-github logo" aria-hidden="true"></i>
-                </a><br/>
-                <span id="copy">
-              <small>Copyright© youngscientist|Designed by Maxwizard</small>
-              </span>
-            </p>)
+const footerLogo=( <p>
+                    <a href="https://web.facebook.com/abdullahi.oladejo.10">
+                    <i className="fa fa-facebook-square logo" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://wa.me/"><i className="fa fa-whatsapp logo" aria-hidden="true"></i>
+                    </a>
+              <a href="https://twitter.com/oladejoabdulla7">
+              <i className="fa fa-twitter logo" aria-hidden="true"></i>
+              </a>
+                    <a href="https://www.instagram.com/maxwizardth/">
+                    <i className="fa fa-instagram logo" aria-hidden="true"></i>
+                    </a>
+              <a href="https://linkedIn.com/"><i className="fa fa-linkedin-square logo" aria-hidden="true">
+              </i>
+              </a>
+             <a href="https://github.com/maxwizardth">
+             <i className="fa fa-github logo" aria-hidden="true"></i>
+             </a><br/>
+           <span id="copy">
+              <small>Copyright© all reserved by Maxwizard</small>
+            </span>
+                  </p>)
 
-    return (<footer style={footerStyle}>
+        return (<footer style={{textAlign:'center',
+        						color:'white',
+        						background:'#0588b0',
+        						padding:'5px'}}>
                 <h2>Connect with Us<hr/></h2>
-                {contact}
-                {footerLogo}
-             </footer>)
-	}
+               {contact}
+               {footerLogo}
+              </footer>)}
+          }
+
+
+const PopulationDiv=(props)=>{
+    const newData=data.sort((a,b)=>b.population-a.population).map((country)=>{
+      return {name:country.name.common,population:country.population}})
+    const world=newData[0].population
+    const divStyle={width: '90%',
+                  margin: '1px',
+                  paddingLeft: '20px',
+                                 
+                  }
+
+    const element=newData.splice(props.start,props.end).map((country,index)=>{ 
+          const barWidth=country.population*90/world
+          const barStyle={      
+        background: '#fca22a',
+        paddingLeft:`${barWidth}%`,
+        border:'solid #fca22a 8px',
+        marginLeft: '4px',
+        borderRadius:'5px',
+        display:'inline-block', }
+      return (<div style={divStyle} key={index}>
+                <div >
+                 {`${index+1}.`} {country.name} ({country.population})
+                </div>
+                <div style={barStyle}></div> 
+               </div>)})
+      return element
+   }
+
+const buttonStyle={
+  textAlign:'center',
+  height:'40px',
+  color:'white',
+  background:'#8ec0ff',
+  margin:'4px',
+  border:'#0588b0 solid 3px',
+  borderRadius:'10px',
+  padding:'8px'
+}
+class Population extends React.Component{ 
+   state={start:0,end:10}
+     render(){
+  	return <div style={{background:'white',color:'black',margin:'15px',borderRadius:'15px'}}>
+          <h4 style={{padding:'8px',textAlign:'center'}}> MOST POPULATED COUNTRIES</h4>
+  				<PopulationDiv start={this.state.start} end={this.state.end}/>
+          <div style={{padding:'15px'}}>
+  				<button style={buttonStyle} onClick={()=>this.setState({start:this.state.start-10,end:this.state.end-10})}>Hide Last ten</button>
+  				<button style={buttonStyle} onClick={()=>this.setState({start:this.state.start+10,end:this.state.end+10})}>Show Next ten</button>
+  				</div>
+  				</div>
+  }
 }
 
-/*________________Footer component end________________________*/
 
+const header1Info=(<p>In 2011, the global population reached the 7billion mark, it stands at almost 
+7.9billion in 2021,with the study of the data and the analysis of the growth rate,
+ it's expected to grow to around 8.5billion in 2030, 9.7billion in 2050 and 10.9billion in 2100.</p>)
 
+const headerTitle='Day5: World Population Analysis'
 
-/*_____________creating the App component__________________________*/
-class App extends React.Component{
-	render(){
-          const userData={surname:'OLADEJO',
-			  firstname:'ABDULLLAHI',
-			  job:'Junior Developer',
-			  country:'Nigeria',
-			  skills:['HTML','CSS','Sass',
-			    	 'JS','React','Numpy',
-			    	  'SQL','Python','Pandas',
-			    	  'Django','graphQL',
-			    	  'MySQL']}
-
-
-		return(<div>
-			<Header title='Day4: User Card'
-			 info='The following shows little information about the author'/>
-			<UserCard data={userData}/>
+class PopulationApp extends React.Component{
+	render(){return(
+		<div>
+			<Header title={headerTitle} info={header1Info}/>
+			<Population/>
 			<Footer/>
-			</div>)
+		   </div>)}
 		}
-		}
-const root=document.getElementById('root')
-ReactDOM.render(<App />,root)
 
+
+
+const rootElement = document.getElementById('root')
+ReactDOM.render(<PopulationApp />, rootElement)
     </script>
   </body>
 </html>
