@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>array</title>
+</head>
+<body>
+	<h2 id="demo"></h2>
+	<h2 id="demi"></h2>
+	<h2 id="term"></h2>
+<script>
+	
+      var a = prompt("what is the first term","");
+      var d=prompt("what is the common difference","");
+      var c=prompt("find the value of what term")
+       var n=prompt("list the first what terms of the sequence?",""); 
+       var s=prompt("sum of first what terms?")
+        for (var i = 1;i <=n;i++ ) {function fun(a,n,d)
+        	{return eval(a+"+"+(i-1)*d);
+       	 }
+       	 
+       var s=document.getElementById('demo').innerHTML+=fun(a,n,d) +" ";
+        function sum(a,s,d)
+        {
+       	 	return (s*(eval(2*a+"+"+(s-1)*d))/2);
+       	 }
+       	 var s=document.getElementById('demi').innerHTML="the sum of the first"+" "+n+"<sup>"+"th"+"</sup>"+" "+ "term is"+" " + sum(a,n,d);
+       	 function term(a,c,d)
+        	{return eval(a+"+"+(c-1)*d);
+       	 }
+       	if (term(a,c,d)===NaN) {document.getElementById('term').innerHTML="error! what you input is not a number"}
+       		else
+       	 var y=document.getElementById('term').innerHTML="the"+" "+c+"<sup>"+"th"+"</sup>"+" "+ "term is"+" "+ term(a,c,d);
+       	}
+       	
+
+      
+</script>
+</body>
+</html>
