@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>30 Days Of React Challenge</title>
+    <style type="text/css">
+    	body{background: #8ec0ff;
+         border:15px solid transparent;
+         margin:0;
+        border-image:url(https://github.com/maxwizardth/ReactProject/blob/main/React/Media/Desert.jpg?raw=true) 40% round;}    
+            h5{margin: 2px;} 
+                .fa{margin-left: 11px;color: white}
+               
+    
+    </style>
+  </head>
+
+  <body>
+    <div id="root"></div>
+	  <script src="countries.js"></script>
+    <script crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"> 
+    </script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+
+const myImage = 'https://github.com/maxwizardth/ReactProject/blob/main/React/Media/Desert.jpg?raw=true'
+
+class Header extends React.Component{
+  render(){
+  	const headerStyle={background:`url(${myImage})`,
+				color:'white',
+				padding:'5px 0px 3px 18px',
+				margin:'0px'}
+    const {title,info}=this.props
+        const h2Style={textAlign:'center',
+                marginTop:'3px'}
+    return (<div style={headerStyle}>
+              <h2 style={h2Style}>
+               Welcom to 30Days Of React Challenge
+              </h2> 
+                 
+                   <h3>{title}</h3>
+                    {info}
+                 
+        
+             </div>)
+
+  }
+}
+
+
+
+class Footer extends React.Component{
+render(){
+const contact=(<div>
+                <h5>Call Hours: 9am-9pm (Mon-Fri)</h5>
+                <span><a href="https://">
+                    <i className="fa fa-phone logo" aria-hidden="true">+2349153036869</i>
+                </a></span>
+                <span><a href="https://">
+                   <i className="fa fa-envelope logo" aria-hidden="true"> abdullahioladejo1@gmail.com</i>
+                 </a></span>
+               </div>)
+
+const footerLogo=( <p>
+                    <a href="https://web.facebook.com/abdullahi.oladejo.10">
+                    <i className="fa fa-facebook-square logo" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://wa.me/"><i className="fa fa-whatsapp logo" aria-hidden="true"></i>
+                    </a>
+              <a href="https://twitter.com/oladejoabdulla7">
+              <i className="fa fa-twitter logo" aria-hidden="true"></i>
+              </a>
+                    <a href="https://www.instagram.com/maxwizardth/">
+                    <i className="fa fa-instagram logo" aria-hidden="true"></i>
+                    </a>
+              <a href="https://linkedIn.com/"><i className="fa fa-linkedin-square logo" aria-hidden="true">
+              </i>
+              </a>
+             <a href="https://github.com/maxwizardth">
+             <i className="fa fa-github logo" aria-hidden="true"></i>
+             </a><br/>
+           <span id="copy">
+              <small>Copyright© all reserved by Maxwizard</small>
+            </span>
+                  </p>)
+
+        return (<footer style={{textAlign:'center',
+        						color:'white',
+        						background:'#0588b0',
+        						padding:'5px'}}>
+                <h2>Connect with Us<hr/></h2>
+               {contact}
+               {footerLogo}
+              </footer>)}
+          }
+
+
+
+const giftImg ='https://github.com/maxwizardth/ReactProject/blob/main/React/Media/gift1.jpg?raw=true'
+
+
+class Country extends Component{
+	constructor(props){
+		super(props)
+
+	}
+     state={countryPredicted:''}
+
+	predict=()=>{
+	const AllKeys=['name','population',
+ 					'capital','flags',
+ 					'continents','maps',
+ 					'region','languages',
+ 					'independent','currencies',
+ 					'coatOfArms']
+ 	const newCountry=data.sort((a,b)=>b.population-a.population).map((country)=>{
+ 		const countries=AllKeys.reduce((init,key)=>{
+ 			return {...init,[key]:country[key]}},{})
+      return countries})
+ 	return newCountry[Math.floor(Math.random()*252)]
+ 	}
+
+    currency=(currencyObject)=>{
+    		const currencyArray=Object.values(currencyObject).map((obj)=>obj.name)
+    		return <ListItems items={currencyArray}/>
+    }
+
+    language=(languageObject)=>{
+    	const languageArray=Object.values(languageObject)
+    	return <ListItems items={languageArray}/>
+    }
+
+    Destiny=()=>this.setState({countryPredicted:this.predict()})
+
+    render(){
+ 	 const predictedCountry=this.predict()
+ 	 console.log(predictedCountry)
+ 	  const {name, population, capital, flags, continents, maps,
+ 	  region, languages, independent, 
+ 	  currencies, coatOfArms}=predictedCountry
+ 	
+ 	return ( <div style={{textAlign:'center',display:`${this.props.display}`}}>
+  <h2>YOUR DESTINY</h2>
+  <b>Dear {this.props.Firstname},</b><br/>
+  <p>Either you like it or not, You have been destined to travel to a country in  
+  {' '}{region}. A place where you will be spending {this.currency(currencies)}. 
+  Don't you get it? I mean a country full of people speaking{'  '} 
+   {this.language(languages)}. Yeah! I am talking about {name.common}. </p>
+   <p>
+   when you end up there you are going to meet people who are going to guide you on your life path, to help make the right decisions. 
+   So don't hesitate a single second because meeting someone who has the ower to change your life is rare and precious.
+   All you have to know is who they are, where they will be and when, and it's something I'm honored to reveal to you. 
+   you can easily meet the person if you stay in
+  ({capital}) for that is where your turning point located. You can thank me later when finally meet the person. </p> 
+  
+  <div className=" container" >
+    <h2>{name.common}</h2>
+      
+    <img src={`${flags.png}`} alt="Paris" width="200" height="40" /> 
+    <br/>
+    <img src={`${coatOfArms.png}`} width='200' height='200' alt="Paris"/>
+    <br/>
+    Capital: {capital}
+    </div>
+</div>
+  )
+		  }
+}
+
+
+class DestinyApp extends React.Component{
+state={destiny:'none',gift:'inline-block',firstName:'',lastName:'',month:''}
+change=()=>this.setState({destiny:'inline-block',gift:'none'})
+handleChange = (e) => {
+    const value = e.target.value
+    const name=e.target.name
+    this.setState({ [name]: value })
+  }
+
+render(){
+const buttonStyle={
+  textAlign:'center',
+  height:'40px',
+  color:'white',
+  background:'#8ec0ff',
+  margin:'4px',
+  border:'#0588b0 solid 3px',
+  borderRadius:'10px',
+  padding:'8px'
+}
+const imgStyle={display:`${this.state.gift}`,
+				margin:'2px',
+				width:'120px',
+			    height:'200x'}
+
+
+ return (<div style={{background:'white',
+ 					 color:'black',
+ 					 margin:'10px',
+ 					 borderRadius:'15px',
+ 					 textAlign:'center'}}>          
+          <div style={{padding:'5px'}}>
+            <Country display={this.state.destiny} Firstname={this.state.firstName}/>
+
+            
+            <div style={{display:`${this.state.gift}`}}>
+          
+           <h4>Fill the following form and click on anyone of the box below to see the information 
+            we have about your destiny</h4>
+          <form onSubmit={this.handleSubmit}>
+          <div>
+            Firstname:{'  '}<input
+              type='text'
+              name='firstName'
+              placeholder='First Name'
+              onChange={this.handleChange}
+            />
+          </div>
+          <div>
+            Lastname:{'  '}<input
+              type='text'
+              name='lastName'
+              placeholder='Last Name'
+              onChange={this.handleChange}
+            />
+          </div>
+          <div>
+            Birth Month:{'  '}<input
+              type='month'
+              name='month'
+              placeholder='Title'
+              
+              onChange={this.handleChange}
+            />
+          </div>
+        </form>
+  		  
+            
+           <img src={giftImg} style={imgStyle} onClick={this.change}/>
+           <img src={giftImg} style={imgStyle} onClick={this.change}/>
+           <img src={giftImg} style={imgStyle} onClick={this.change}/>
+           <img src={giftImg} style={imgStyle} onClick={this.change}/>
+            </div>
+           </div>
+  		</div>)
+  }
+}
+const app=(<div>
+			<Header title='Day6: Holiday Country' info='this is the app'/>
+			<DestinyApp/>
+			<Footer/>
+		   </div>)
+
+const rootElement = document.getElementById('root')
+ReactDOM.render(app, rootElement)
+
+
+    </script>
+  </body>
+</html>
+
