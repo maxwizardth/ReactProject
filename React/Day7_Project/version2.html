@@ -103,6 +103,19 @@ const footerLogo=( <p>
 
 
 const giftImg ='https://github.com/maxwizardth/ReactProject/blob/main/React/Media/gift1.jpg?raw=true'
+class ListItems extends React.Component{
+	constructor(props){
+		super(props)
+	}
+	render(){
+		const items=this.props.items
+		const start=items.splice(0,items.length-1).join(', ')
+		const end=start.length>0?' and '+items:items
+		const wordItems=start+end
+	return wordItems
+	}
+
+}
 
 
 class Country extends React.Component{
@@ -252,7 +265,8 @@ const imgStyle={display:`${this.state.gift}`,
   }
 }
 const app=(<div>
-			<Header title='Day6: Holiday Country' info='this is the app'/>
+			<Header title='Day6: Holiday Country' info='Destiny App is an app programmed using React js. It tell you your destined country i.e the country you should try to travel to for important change in your life. all you just have to do is to provide your names and birth month then you click on one box to get your result.
+'/>
 			<DestinyApp/>
 			<Footer/>
 		   </div>)
