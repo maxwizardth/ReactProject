@@ -83,10 +83,10 @@ img{width:100%;
   #quote{font-size: 18px}
 }
 
-body{background: #8ec0ff;
+body{background: #455;
          border:15px solid transparent;
          margin:0;
-        border-image:url(https://github.com/maxwizardth/ReactProject/blob/main/React/Media/Desert.jpg?raw=true) 40% round;}    
+        border-image:url('https://github.com/maxwizardth/ReactProject/blob/main/React/Media/images%20(1).jpeg?raw=true') 40% round;}    
             h5{margin: 2px;} 
                 .fa{margin-left: 11px;color: white
   
@@ -108,7 +108,7 @@ body{background: #8ec0ff;
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
 
-const myImage = 'https://github.com/maxwizardth/ReactProject/blob/main/React/Media/Desert.jpg?raw=true'
+const myImage ='https://github.com/maxwizardth/ReactProject/blob/main/React/Media/images%20(1).jpeg?raw=true'
 
 class Header extends React.Component{
   render(){
@@ -120,12 +120,17 @@ class Header extends React.Component{
         const h2Style={textAlign:'center',
                 marginTop:'3px'}
     return (<div style={headerStyle}>
+    	      <div style={{background:'#333',
+    	                  margin:'-7px 0px 0px -18px',
+    	                  padding:'13px',
+    	                  height:'auto',
+    	                  width:'105%'}}>
               <h2 style={h2Style}>
                Welcome to 30Days Of React Challenge
-              </h2> 
-                 
-                   <h3>{title}</h3>
-                    {info}
+              </h2>    
+              <h3>{title}</h3>
+            </div>
+              {info}
                  
         
              </div>)
@@ -172,7 +177,7 @@ const footerLogo=( <p>
 
         return (<footer style={{textAlign:'center',
         						color:'white',
-        						background:'#0588b0',
+        						background:'#111',
         						padding:'5px'}}>
                 <h2>Connect with Us<hr/></h2>
                {contact}
@@ -252,4 +257,3 @@ ReactDOM.render(App, rootElement)
     </script>
   </body>
 </html>
-
