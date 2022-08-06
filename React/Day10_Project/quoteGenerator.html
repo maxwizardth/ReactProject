@@ -80,6 +80,7 @@ img{width:100%;
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
   .prev, .next,.text {font-size: 11px}
+  #quote{font-size: 11px}
 }
 
 body{background: #8ec0ff;
@@ -218,7 +219,7 @@ class Slider extends React.Component{
        <div className="numbertext">{`${this.state.images+1} / ${allImage.length}`}</div>
        <p id='quote'>
         {allImage[this.state.images].text}</p>
-        <img src={myImage} alt='none'/>
+        <img src='https://github.com/maxwizardth/ReactProject/blob/main/React/Media/images%20(1).jpeg?raw=true' alt='none'/>
        <div className="text">{allImage[this.state.images].author}</div>
      </div>
 
