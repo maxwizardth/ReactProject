@@ -235,9 +235,11 @@ class Slider extends React.Component{
 
 
 const Title='Day10: Quote Generator'
-const Info=<p>This is random generated app that generate different Inspiration and wisdom quotes</p>
+const Info=<p>This is random quote app that generate different Inspiration and wisdom quotes.<br/> there are two arrows to see next and previous also there
+are two buttons <br/> <b>1. Random Quote</b>: this is use to activate random quote i.e another quote will be generated every five minutes. <br/>
+	<b>2. Stop Random </b> this is use to stop the randomization i.e to see the next quote you have to click next arrow.  </p>
 const App=(<div>
-			<Header title={Title}/>
+			<Header title={Title} info={Info}/>
 			<Slider/>
 			<Footer/>
 		  </div>)
