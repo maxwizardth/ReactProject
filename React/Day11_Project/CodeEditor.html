@@ -9,79 +9,6 @@
  
 * {box-sizing: border-box}
 body {font-family: Verdana, sans-serif; margin:0}
-/* Slideshow container */
-.slideshow-container {
-  max-width: 700px;
-  position: relative;
-  margin: auto;
-  max-height: 300px;
-}
-img{width:100%;
-  height: 300px;
-  background: transparent;}
-/* Next & previous buttons */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 16px 5px 16px 16px;
-  margin-top: -22px;
-  color: white;
-  font-weight: bold;
-  background: transparent;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
-}
-
-/* Caption text */
-.text {
-  color: #f2f2f2;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-#quote{
-  color: white;
-  font-size: 24px;
-  padding: 12px;
-  text-align: center;
-  position: absolute;
-  top: 50;
-  left: 30;
-}
-
-
-/* On smaller screens, decrease text size */
-@media only screen and (max-width: 500px) {
-  .prev, .next,.text {font-size: 12px}
-  #quote{font-size: 18px}
-}
 
 body{background: #455;
          border:15px solid transparent;
@@ -185,6 +112,7 @@ const footerLogo=( <p>
               </footer>)}
           }
 
+
 class Editor extends React.Component{
   state={images:0}
   html=React.createRef()
@@ -193,7 +121,6 @@ class Editor extends React.Component{
   result=React.createRef()
   
   cssRun=()=>{
-
   const htmlCode=this.html.current.value
   const cssCode=this.css.current.value
   const javascriptCodes=this.javascript.current.value
@@ -209,7 +136,6 @@ class Editor extends React.Component{
 
 
   jsRun=()=>{
-
   const htmlCode=this.html.current.value
   const cssCode=this.css.current.value
   const javascriptCodes=this.javascript.current.value
@@ -218,7 +144,7 @@ class Editor extends React.Component{
     resultPage.writeln(
  	   htmlCode +
        "<style>" +cssCode +"</style>"+
-        "<script>"+javascriptCodes+"<\/script>")
+        "<script>"+javascriptCodes+"</script>")
      resultPage.close();
  }
 
@@ -244,12 +170,17 @@ class Editor extends React.Component{
 }
     const buttonStyle={
     	outline:'none',
-    	textAlign:'center'
+    	textAlign:'center',
+      background:'#342',
+      color:'white',
+      margin:'5px',
+      height:'30px',
+      borderRadius:'13px',
+
     }
     const row={
-    	width: '32%',
     	textAlign:'center',
-    	minWidth:'290px',
+    	minWidth:'250px',
         display:'inline-block',
         margin:'2px'}
 
@@ -268,23 +199,25 @@ class Editor extends React.Component{
 			     }}>
 
       <h3 style={{textAlign:'center'}}>HTML Code Editor</h3>
- 	<div style={{}}>
- 	<div style={row}>
+ 	<div id='row' style={{width:'100%'}}>
+ 	<div style={row} className='column'>
  	<span style={spanStyle}>HTML</span><br/>
  	<textarea placeholder="HTML" style={textareaStyle} ref={this.html} onKeyUp={this.cssRun}>
  	</textarea>
  	</div>
- 	<div style={row}>
+ 	<div style={row} className='column'>
  	<span style={spanStyle}>CSS</span><br/>
     <textarea placeholder="CSS" style={textareaStyle} ref={this.css} onKeyUp={this.cssRun}>
     </textarea>
     </div>
- 	<div style={row}>
+ 	<div style={row} className='column'>
     <span style={spanStyle}>JavaScript</span><br/>
     <textarea placeholder="JavaScript" style={textareaStyle} ref={this.javascript}>
     </textarea>
     </div>
-    <button onClick={this.jsRun}>Run with JavaScrip</button>
+    <button onClick={this.jsRun} style={buttonStyle}>Run with JavaScrip</button>
+    <br/>
+    <h3>Result...</h3>
     <iframe id="code" style={iframeStyle} ref={this.result}></iframe>
     </div>
     </div>)
@@ -292,7 +225,12 @@ class Editor extends React.Component{
 }
 
 
-const Title='Day10: Quote Generator'
+const Title='Day11: Code Editor'
+const Info=<p>This is online Code Editor designed using React. it has three 
+boxes to type HTML,CSS and JavaScript codes. the html and CSS codes 
+run automatically while you need to click the button to run the javascript 
+codeds with it. <br/><b>Note: </b>you are advise to set your phone to desktop site 
+for better view. </p>
 const App=(<div>
 			<Header title={Title}/>
 			<Editor/>
