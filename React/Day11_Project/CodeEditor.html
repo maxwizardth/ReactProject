@@ -218,11 +218,12 @@ class Editor extends React.Component{
     <textarea placeholder="JavaScript" style={textareaStyle} ref={this.javascript}>
     </textarea>
     </div>
-    <button onClick={this.jsRun} style={buttonStyle}>Run with JavaScrip</button>
+    </div>
+    <button onClick={this.jsRun} style={buttonStyle}>Run with JavaScript</button>
     <br/>
     <h3>Result...</h3>
     <iframe id="code" style={iframeStyle} ref={this.result}></iframe>
-    </div>
+    
     </div>)
 	}
 }
