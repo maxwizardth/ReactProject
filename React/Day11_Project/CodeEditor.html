@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>30 Days Of React Challenge</title>
+    <style type="text/css">
+ 
+* {box-sizing: border-box}
+body {font-family: Verdana, sans-serif; margin:0}
+/* Slideshow container */
+.slideshow-container {
+  max-width: 700px;
+  position: relative;
+  margin: auto;
+  max-height: 300px;
+}
+img{width:100%;
+  height: 300px;
+  background: transparent;}
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px 5px 16px 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  background: transparent;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+#quote{
+  color: white;
+  font-size: 24px;
+  padding: 12px;
+  text-align: center;
+  position: absolute;
+  top: 50;
+  left: 30;
+}
+
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 500px) {
+  .prev, .next,.text {font-size: 12px}
+  #quote{font-size: 18px}
+}
+
+body{background: #455;
+         border:15px solid transparent;
+         margin:0;
+        border-image:url('https://github.com/maxwizardth/ReactProject/blob/main/React/Media/images%20(1).jpeg?raw=true') 40% round;}    
+            h5{margin: 2px;} 
+                .fa{margin-left: 11px;color: white
+  
+               
+    
+    </style>
+  </head>
+
+  <body>
+    <div id="root">
+    	
+    </div>
+	  <script src="qoute.js"></script>
+    <script crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"> 
+    </script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+
+const myImage ='https://github.com/maxwizardth/ReactProject/blob/main/React/Media/images%20(1).jpeg?raw=true'
+
+class Header extends React.Component{
+  render(){
+  	const headerStyle={background:`url(${myImage})`,
+				color:'white',
+				padding:'5px 0px 3px 18px',
+				margin:'0px'}
+    const {title,info}=this.props
+        const h2Style={textAlign:'center',
+                marginTop:'3px'}
+    return (<div style={headerStyle}>
+    	      <div style={{background:'#344',
+    	                  margin:'-7px 0px 0px -22px',
+    	                  padding:'13px',
+    	                  height:'auto',
+    	                  width:'107%'}}>
+              <h2 style={h2Style}>
+               Welcome to 30Days Of React Challenge
+              </h2>    
+              <h3>{title}</h3>
+            </div>
+              {info}
+                 
+        
+             </div>)
+
+  }
+}
+
+
+
+class Footer extends React.Component{
+render(){
+const contact=(<div>
+                <h5>Call Hours: 9am-9pm (Mon-Fri)</h5>
+                <span><a href="https://">
+                    <i className="fa fa-phone logo" aria-hidden="true">+2349153036869</i>
+                </a></span>
+                <span><a href="https://">
+                   <i className="fa fa-envelope logo" aria-hidden="true"> abdullahioladejo1@gmail.com</i>
+                 </a></span>
+               </div>)
+
+const footerLogo=( <p>
+                    <a href="https://web.facebook.com/abdullahi.oladejo.10">
+                    <i className="fa fa-facebook-square logo" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://wa.me/"><i className="fa fa-whatsapp logo" aria-hidden="true"></i>
+                    </a>
+              <a href="https://twitter.com/oladejoabdulla7">
+              <i className="fa fa-twitter logo" aria-hidden="true"></i>
+              </a>
+                    <a href="https://www.instagram.com/maxwizardth/">
+                    <i className="fa fa-instagram logo" aria-hidden="true"></i>
+                    </a>
+              <a href="https://linkedIn.com/"><i className="fa fa-linkedin-square logo" aria-hidden="true">
+              </i>
+              </a>
+             <a href="https://github.com/maxwizardth">
+             <i className="fa fa-github logo" aria-hidden="true"></i>
+             </a><br/>
+           <span id="copy">
+              <small>Copyright© all reserved by Maxwizard</small>
+            </span>
+                  </p>)
+
+        return (<footer style={{textAlign:'center',
+        						color:'white',
+        						background:'#244',
+        						padding:'5px'}}>
+                <h2>Connect with Us<hr/></h2>
+               {contact}
+               {footerLogo}
+              </footer>)}
+          }
+
+class Editor extends React.Component{
+  state={images:0}
+  html=React.createRef()
+  css=React.createRef()
+  javascript=React.createRef()
+  result=React.createRef()
+  
+  cssRun=()=>{
+
+  const htmlCode=this.html.current.value
+  const cssCode=this.css.current.value
+  const javascriptCodes=this.javascript.current.value
+  const resultPage=this.result.current.contentWindow.document
+ 	resultPage.open()
+    resultPage.writeln(
+ 	   htmlCode +
+        "<style>" +
+        cssCode +
+        "</style>")
+     resultPage.close();
+ }
+
+
+  jsRun=()=>{
+
+  const htmlCode=this.html.current.value
+  const cssCode=this.css.current.value
+  const javascriptCodes=this.javascript.current.value
+  const resultPage=this.result.current.contentWindow.document
+ 	resultPage.open()
+    resultPage.writeln(
+ 	   htmlCode +
+       "<style>" +cssCode +"</style>"+
+        "<script>"+javascriptCodes+"<\/script>")
+     resultPage.close();
+ }
+
+ render(){
+ 	const textareaStyle={
+      width: '100%',
+      float: 'top',
+      minHeight: '250px',
+      overFlow: 'scroll',
+      background: '#121',
+      outline: 'nonek',
+      fontFamily: 'Courier, sans-serifk',
+      fontSize: '14pxk',
+      color:'white'}
+
+   const iframeStyle= {
+      bottom: '0',
+      marginLeft:'6px',
+      position: 'relative',
+      width: '98%',
+      height: '35em',
+      background:'white'
+}
+    const buttonStyle={
+    	outline:'none',
+    	textAlign:'center'
+    }
+    const row={
+    	width: '32%',
+    	textAlign:'center',
+    	minWidth:'290px',
+        display:'inline-block',
+        margin:'2px'}
+
+     const spanStyle={
+    	textAlign:'center',
+    	margin:'auto'
+    	
+        }
+
+ 	return (
+ 	<div style={{background:'white',
+			     padding:'15px',
+			     borderRadius:'8px',
+			     margin:'15px',
+			     textAlign:'center'
+			     }}>
+
+      <h3 style={{textAlign:'center'}}>HTML Code Editor</h3>
+ 	<div style={{}}>
+ 	<div style={row}>
+ 	<span style={spanStyle}>HTML</span><br/>
+ 	<textarea placeholder="HTML" style={textareaStyle} ref={this.html} onKeyUp={this.cssRun}>
+ 	</textarea>
+ 	</div>
+ 	<div style={row}>
+ 	<span style={spanStyle}>CSS</span><br/>
+    <textarea placeholder="CSS" style={textareaStyle} ref={this.css} onKeyUp={this.cssRun}>
+    </textarea>
+    </div>
+ 	<div style={row}>
+    <span style={spanStyle}>JavaScript</span><br/>
+    <textarea placeholder="JavaScript" style={textareaStyle} ref={this.javascript}>
+    </textarea>
+    </div>
+    <button onClick={this.jsRun}>Run with JavaScrip</button>
+    <iframe id="code" style={iframeStyle} ref={this.result}></iframe>
+    </div>
+    </div>)
+	}
+}
+
+
+const Title='Day10: Quote Generator'
+const App=(<div>
+			<Header title={Title}/>
+			<Editor/>
+			<Footer/>
+		  </div>)
+
+const rootElement = document.getElementById('root')
+ReactDOM.render(App, rootElement)
+
+    </script>
+  </body>
+</html>
