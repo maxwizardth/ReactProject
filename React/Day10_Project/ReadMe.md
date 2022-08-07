@@ -11,4 +11,5 @@ Seconds which means you will seeing new quote every five seconds.
 You don't have worry about the time. 
 There exist two buttons that help you control
 Its behavior.
-1. 
+
+<img src="https://github.com/maxwizardth/ReactProject/blob/main/React/Media/quoteGen.gif" width=100 height=50>
