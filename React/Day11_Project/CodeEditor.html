@@ -9,7 +9,10 @@
  
 * {box-sizing: border-box}
 body {font-family: Verdana, sans-serif; margin:0}
-
+/* On large screens, increase width size */
+@media only screen and (min-width: 500px) {
+  textarea{min-width:350px;}
+}
 body{background: #455;
          border:15px solid transparent;
          margin:0;
@@ -144,7 +147,7 @@ class Editor extends React.Component{
     resultPage.writeln(
  	   htmlCode +
        "<style>" +cssCode +"</style>"+
-        "<script>"+javascriptCodes+"</script>")
+        "<script>"+javascriptCodes+"<\/script>")
      resultPage.close();
  }
 
@@ -232,7 +235,7 @@ run automatically while you need to click the button to run the javascript
 codeds with it. <br/><b>Note: </b>you are advise to set your phone to desktop site 
 for better view. </p>
 const App=(<div>
-			<Header title={Title}/>
+			<Header title={Title} info={Info}/>
 			<Editor/>
 			<Footer/>
 		  </div>)
