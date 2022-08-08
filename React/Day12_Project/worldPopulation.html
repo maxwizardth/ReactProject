@@ -1,245 +1,260 @@
-
 <!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>CGPA CALCULATOR</title>
-	<style type="text/css">
-
-	#customers {
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  margin: auto;
-  width: 50%;}
-
-  #customers td, #customers th {
-  border: 1px solid #ddd;
-  padding: 8px;
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>30 Days Of React Challenge</title>
+    <style type="text/css">
+ 
+body{background-image: url("tiny.png");
+    background-attachment:fixed;
+    background-size: cover;
+    background-position:center;
+    font-family:sans-serif;
+    min-height:80vh;
+    justify-content:center;
+    align-items:center;
+    overflow: scroll;
+    background-color:#20262e;
+    color:#0073e6;
 }
-
-#customers tr:nth-child(even){background-color: lightblue;}
-
-#customers tr:hover {background-color: lightblue;}
-
-#customers th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: navy;
-  color: white;
+.main
+{
+margin-top:1%;
+overflow:hidden ;
+    text-align:center;
+    background-color:rgba(0,0,0,0.8);    
+    box-shadow: 0px 0px 20px 5px rgba(0,0,0,.5);
 }
-input{width: 50px;
-  border: 0.5px solid navy;
-  border-radius: 4px;
-  padding: 5px;
-  text-align: center;
+.thanks{   
+    font-family: 'ubuntu', cursive;
+    color: #fff;
+    text-shadow:0 0 5px red, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 
+    25px #0073e6, 0 0 30px #0073e6, 0 0 35px #0073e6;
+    
 }
-input:focus{outline: none;
-  cursor: pointer;
-  border-color: white;
-  box-shadow: 0px 0px 10px black;
+@keyframes z1 {
+    0% {
+        top:70%;
+        }
+    100% {
+        top:80%;
+        }
+    }
+
+.a{perspective:300px;
+position:relative;
+margin-left:23%;
+margin-top:30px;
+opacity:1;
+animation:a 2s ease-in-out;}
+@keyframes a{from{transform:rotate(0deg);}
+to{transform:rotate(360deg);}}
+.b{height:360px;
+border:3px solid gray;
+border-radius:5px;
+width:80%;
+color:white;
+box-shadow: 0 0 15px 0 #0073e6;
+background-color:#20262f;
+position:absolute ;
+backface-visibility:hidden;
 }
-
-</style>
-</head>
-<body>
-
-	<table id="customers">
-		<tr>
-			<th>Scores</th>
-			<th>Equivalent point</th>
-            <th>Enter No of Units</th>
-        </tr>
-
-      
-
-  <tr>
-        
-        	<td><input type="text" name="gradechecker" onkeyup="writeMessage()" id="demo1"></td>
-        	<td><input type="display" name="Pointchecker" id="demo2" disabled></td>
-        	<td><input type="text" name="Unit" id="Unit"></td>
-
-        </tr>
-
- <tr>
-        
-          <td><input type="text" name="gradechecker" onkeyup="writeMessage()" id="demo1"></td>
-          <td><input type="display" name="Pointchecker" id="demo2" disabled></td>
-          <td><input type="text" name="Unit" id="Unit"></td>
-
-        </tr>
- <tr>
-        
-          <td><input type="text" name="gradechecker" onkeyup="writeMessage()" id="demo1"></td>
-          <td><input type="display" name="Pointchecker" id="demo2" disabled></td>
-          <td><input type="text" name="Unit" id="Unit"></td>
-
-        </tr>
- <tr>
-        
-          <td><input type="text" name="gradechecker" onkeyup="writeMessage()" id="demo1"></td>
-          <td><input type="display" name="Pointchecker" id="demo2" disabled></td>
-          <td><input type="text" name="Unit" id="Unit"></td>
-
-        </tr>
- <tr>
-        
-          <td><input type="text" name="gradechecker" onkeyup="writeMessage()" id="demo1"></td>
-          <td><input type="display" name="Pointchecker" id="demo2" disabled></td>
-          <td><input type="text" name="Unit" id="Unit"></td>
-
-        </tr>
- <tr>
-        
-          <td><input type="text" name="gradechecker" onkeyup="writeMessage()" id="demo1"></td>
-          <td><input type="display" name="Pointchecker" id="demo2" disabled></td>
-          <td><input type="text" name="Unit" id="Unit"></td>
-
-        </tr>
- <tr>
-        
-          <td><input type="text" name="gradechecker" onkeyup="writeMessage()" id="demo1"></td>
-          <td><input type="display" name="Pointchecker" id="demo2" disabled></td>
-          <td><input type="text" name="Unit" id="Unit"></td>
-
-        </tr>
- <tr>
-        
-          <td><input type="text" name="gradechecker" onkeyup="writeMessage()" id="demo1"></td>
-          <td><input type="display" name="Pointchecker" id="demo2" disabled></td>
-          <td><input type="text" name="Unit" id="Unit"></td>
-
-        </tr>
- <tr>
-        
-          <td><input type="text" name="gradechecker" onkeyup="writeMessage()" id="demo1"></td>
-          <td><input type="display" name="Pointchecker" id="demo2" disabled></td>
-          <td><input type="text" name="Unit" id="Unit"></td>
-
-        </tr>
- <tr>
-        
-          <td><input type="text" name="gradechecker" onkeyup="writeMessage()" id="demo1"></td>
-          <td><input type="display" name="Pointchecker" id="demo2" disabled></td>
-          <td><input type="text" name="Unit" id="Unit"></td>
-
-        </tr>
- <tr>
-        
-          <td><input type="text" name="gradechecker" onkeyup="writeMessage()" id="demo1"></td>
-          <td><input type="display" name="Pointchecker" id="demo2" disabled></td>
-          <td><input type="text" name="Unit" id="Unit"></td>
-
-        </tr>
- <tr>
-        
-          <td><input type="text" name="gradechecker" onkeyup="writeMessage()" id="demo1"></td>
-          <td><input type="display" name="Pointchecker" id="demo2" disabled></td>
-          <td><input type="text" name="Unit" id="Unit"></td>
-
-        </tr>
- <tr>
-        
-          <td><input type="text" name="gradechecker" onkeyup="writeMessage()" id="demo1"></td>
-          <td><input type="display" name="Pointchecker" id="demo2" disabled></td>
-          <td><input type="text" name="Unit" id="Unit"></td>
-
-        </tr>
- <tr>
-        
-          <td><input type="text" name="gradechecker" onkeyup="writeMessage()" id="demo1"></td>
-          <td><input type="display" name="Pointchecker" id="demo2" disabled></td>
-          <td><input type="text" name="Unit" id="Unit"></td>
-
-        </tr>
- <tr>
-        
-          <td><input type="text" name="gradechecker" onkeyup="writeMessage()" id="demo1"></td>
-          <td><input type="display" name="Pointchecker" id="demo2" disabled></td>
-          <td><input type="text" name="Unit" id="Unit"></td>
-
-        </tr>
- <tr>
-        
-          <td><input type="text" name="gradechecker" onkeyup="writeMessage()" id="demo1"></td>
-          <td><input type="display" name="Pointchecker" id="demo2" disabled></td>
-          <td><input type="text" name="Unit" id="Unit"></td>
-
-        </tr>
- <tr>
-        
-          <td><input type="text" name="gradechecker" onkeyup="writeMessage()" id="demo1"></td>
-          <td><input type="display" name="Pointchecker" id="demo2" disabled></td>
-          <td><input type="text" name="Unit" id="Unit"></td>
-
-        </tr>
- <tr>
-        
-          <td><input type="text" name="gradechecker" onkeyup="writeMessage()" id="demo1"></td>
-          <td><input type="display" name="Pointchecker" id="demo2" disabled></td>
-          <td><input type="text" name="Unit" id="Unit"></td>
-
-        </tr>
- <tr>
-        
-          <td><input type="text" name="gradechecker" onkeyup="writeMessage()" id="demo1"></td>
-          <td><input type="display" name="Pointchecker" id="demo2" disabled></td>
-          <td><input type="text" name="Unit" id="Unit"></td>
-
-        </tr>
- <tr>
-        
-          <td><input type="text" name="gradechecker" onkeyup="writeMessage()" id="demo1"></td>
-          <td><input type="display" name="Pointchecker" id="demo2" disabled></td>
-          <td><input type="text" name="Unit" id="Unit"></td>
-
-        </tr>
- <tr>
-        
-          <td><input type="text" name="gradechecker" onkeyup="writeMessage()" id="demo1"></td>
-          <td><input type="display" name="Pointchecker" id="demo2" disabled></td>
-          <td><input type="text" name="Unit" id="Unit"></td>
-        </tr>
-        
-	</table>
+.c{height:360px;
+width:80%;
+backface-visibility:none;
+border:3px solid gray;
+border-radius:5px;color:white;
+background-color:#20262f;
+transform-origin:left;
+transform-style:preserve-3d;
+transition-duration:2s;}
+.c:hover{transform:rotateY(-120deg);
   
-  <button onclick="summary(0)">Calculate Points</button>
-   <p class="summary"></p>
-   <button onclick="summary(1)">Confirm Total No of Units Registered :</button>
+  width: 5%;
+  font-size: 2px;
 
-   <p class="summary"></p>
-   <button onclick="summary(2)">Get CGPA</button>
-   <h1 class="summary"></h1>
+}
+
+button{margin:30px;
+    outline:none;
+    cursor:none;
+    border:none;
+    border-radius:20px 20px 20px 0;
+    background-color:white;
+    color:#0073e6;
+    padding:10px;
+    font-size:20px;
+    transition:1s;
+}
+button:hover{
+   transform:scale(1.1);
+    background-color:#0073e6;
+    color:white;
+}
+.what{animation: nam 3s infinite;
+}
+@keyframes nam{
+  0%{ transform: scale(0); }
+  50%
+  {transform: scale(1);}
+  100%{transform: scale(0);}
+}
+
+
+
+body {font-family: Verdana, sans-serif; margin:0}
+
+body{background: #455;
+         border:15px solid transparent;
+         margin:0;
+        border-image:url('https://github.com/maxwizardth/ReactProject/blob/main/React/Media/images%20(1).jpeg?raw=true') 40% round;}    
+            h5{margin: 2px;} 
+                .fa{margin-left: 11px;color: white
   
-	<script>
+               
+    
+    </style>
+  </head>
 
-   function writeMessage(){
-    var scores = document.querySelectorAll("#demo1");
-    var points = document.querySelectorAll("#demo2");
-    var unitElements = document.querySelectorAll("#Unit");
-    var pointSum=0
-    var unitSum=0
-    var i;
-  for (i = 0; i < scores.length; i++) {
-  if (scores[i].value < 45) { points[i].value = 0;}
-else if  (scores[i].value < 50) { points[i].value = 1;}
-else if  (scores[i].value < 60) { points[i].value = 2;}
-else if  (scores[i].value < 70) { points[i].value = 3;}
-else { points[i].value = 4;}
-pointSum+=Number(points[i].value)*Number(unitElements[i].value)
-unitSum+=Number(unitElements[i].value)
-}
-cgpa=pointSum/unitSum
-// return the list of important value
-return [pointSum,unitSum,cgpa]
-}
-function summary(index) {
-summaryList=writeMessage()//Calling the function to get the important value.
-summaryElements=document.querySelectorAll('.summary')
-summaryElements[index].innerHTML =summaryList[index]
+  <body>
+    <div id="root">
+    	
+    </div>
+	  
+    <script crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"> 
+    </script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+
+const myImage ='https://github.com/maxwizardth/ReactProject/blob/main/React/Media/images%20(1).jpeg?raw=true'
+
+class Header extends React.Component{
+  render(){
+  	const headerStyle={background:`url(${myImage})`,
+				color:'white',
+				padding:'5px 0px 3px 18px',
+				margin:'0px'}
+    const {title,info}=this.props
+        const h2Style={textAlign:'center',
+                marginTop:'3px'}
+    return (<div style={headerStyle}>
+    	      <div style={{background:'#344',
+    	                  margin:'-7px 0px 0px -22px',
+    	                  padding:'13px',
+    	                  height:'auto',
+    	                  width:'107%'}}>
+              <h2 style={h2Style}>
+               Welcome to 30Days Of React Challenge
+              </h2>    
+              <h3>{title}</h3>
+            </div>
+              {info}
+                 
+        
+             </div>)
+
+  }
 }
 
 
-</script>
-</body>
+
+class Footer extends React.Component{
+render(){
+const contact=(<div>
+                <h5>Call Hours: 9am-9pm (Mon-Fri)</h5>
+                <span><a href="https://">
+                    <i className="fa fa-phone logo" aria-hidden="true">+2349153036869</i>
+                </a></span>
+                <span><a href="https://">
+                   <i className="fa fa-envelope logo" aria-hidden="true"> abdullahioladejo1@gmail.com</i>
+                 </a></span>
+               </div>)
+
+const footerLogo=( <p>
+                    <a href="https://web.facebook.com/abdullahi.oladejo.10">
+                    <i className="fa fa-facebook-square logo" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://wa.me/"><i className="fa fa-whatsapp logo" aria-hidden="true"></i>
+                    </a>
+              <a href="https://twitter.com/oladejoabdulla7">
+              <i className="fa fa-twitter logo" aria-hidden="true"></i>
+              </a>
+                    <a href="https://www.instagram.com/maxwizardth/">
+                    <i className="fa fa-instagram logo" aria-hidden="true"></i>
+                    </a>
+              <a href="https://linkedIn.com/"><i className="fa fa-linkedin-square logo" aria-hidden="true">
+              </i>
+              </a>
+             <a href="https://github.com/maxwizardth">
+             <i className="fa fa-github logo" aria-hidden="true"></i>
+             </a><br/>
+           <span id="copy">
+              <small>Copyright© all reserved by Maxwizard</small>
+            </span>
+                  </p>)
+
+        return (<footer style={{textAlign:'center',
+        						color:'white',
+        						background:'#244',
+        						padding:'5px'}}>
+                <h2>Connect with Us<hr/></h2>
+               {contact}
+               {footerLogo}
+              </footer>)}
+          }
+
+
+class Editor extends React.Component{
+
+render(){
+	
+const app=(
+    <div>
+      <div className="main">
+        <h1 className="what thanks">0+ worry<br />thank you</h1> 
+        <div className="a" >
+           <div className="b">thank you sir 
+             <hr/><img align="center" src="https://c.tenor.com/cKapehsTWmQAAAAj/mousse-nena.gif" height="100px"/>
+             <br/>  thanks to  my mentor.
+             <br/>and <br/>thanks to the one  who give me his words that helped me to reach  this level.
+             <hr/> once again thanks alot sir...
+            
+          </div>
+          <div className="c">thankyou card<hr/> 
+               <h2 className='thanks'>thanks Mr Ayobami Ogundiran </h2>
+               <img src="https://www.funimada.com/assets/images/cards/big/thank-you-12.gif" height="150px" width='100%' alt='gif'/>
+               <h3 className='thanks'>this is for you.</h3>
+          </div>
+        </div>
+          
+        <h2 className='thanks'> hover this card</h2>
+        <button><b>I really appreciate you</b></button>
+        <h3 className='thanks'>once again I can't thank you enough</h3>   
+      </div>
+    </div>)
+    return app
+}
+
+}
+
+
+const Title='Day11: Thank You Card'
+const Info=<p>This is a thank you card I build today dedicated to the one who gave me the idea of programming. He is no one but Mr Ayobami Ogundiran. He is the one 
+who inspired me to learn this skill. I can still remember How he write those nonsense(codes) and margically turned to amazing thing. lol. I think it will be nice to have a app for him.</p>
+const App=(<div>
+			<Header title={Title} info={Info}/>
+			<Editor/>
+			<Footer/>
+		  </div>)
+
+const rootElement = document.getElementById('root')
+ReactDOM.render(App, rootElement)
+
+    </script>
+  </body>
 </html>
