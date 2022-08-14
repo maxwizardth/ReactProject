@@ -80,7 +80,7 @@ class Header extends React.Component{
                 marginTop:'3px'}
     return (<div style={headerStyle}>
               <h2 style={h2Style}>
-               Welcom to 30Days Of React Challenge
+               Welcome to 30Days Of React Challenge
               </h2> 
                  
                    <h3>{title}</h3>
@@ -163,6 +163,20 @@ class Question extends React.Component{
   static getDerivedStateFromProps(props,state){
     return {data:props.data}
   }
+  
+  componentDidMount(){
+    const optionTree={'A':0,'B':1,'C':2,'D':3}
+    const optionSelected=this.props.userAnswer
+    if(optionSelected){
+    const selectedInputIndex=optionTree[optionSelected]
+    document.querySelectorAll('.option')[selectedInputIndex].checked=true
+  }
+}
+  showExplain=()=>{
+    let initialMode=document.querySelector('#summary').style.display;
+    const newMode=initialMode=='none'?'block':'none'
+    document.querySelector('#summary').style.display=newMode
+  }
    render(){
     const {question,code,options,Answer,summary}=this.state.data
     
@@ -189,7 +203,8 @@ class Question extends React.Component{
           <div id='AnswerBox' className='Answer' 
           style={{display:`${this.props.show}`}}>
           <h5>Answer: {Answer}</h5>
-          <p id='summary'>{summary}</p>
+          <Button text='Show explanation' click={this.showExplain}/>
+          <p id='summary' style={{display:'none'}}>{summary}</p>
           </div>
        </div>) }
    }
@@ -225,12 +240,16 @@ class App extends React.Component{
     this.setState({userAnsers:this.users})
 
   }
+   
 
-  Previous=()=>this.setState({number:(this.state.number-1+data.length)%data.length})
+  Previous=()=>{
+    this.setState({number:(this.state.number-1+data.length)%data.length})
+}
+
 
   Next=()=>this.setState({number:(this.state.number+1)%data.length})
   Submit=()=>this.setState({correction:'block'})
-
+   
    render(){
     const index=this.state.number
      console.log(this.state)
@@ -239,28 +258,29 @@ class App extends React.Component{
                         textAlign:'left'}}>
                <h4 style={{marginLeft:'9px'}}>Question {index+1}</h4>
               <Question data={this.props.data[index]} name={index}
-               key={index} click={this.userAnsers} show={this.state.correction}/>
+               key={index} click={this.userAnsers} 
+               show={this.state.correction}
+               userAnswer={this.state.userAnsers[index]}/>
                <div id='buttons'>
                 <Button click={this.Previous} text='Previous' Class='btn-primary'/>
                 <Button click={this.Next} text='Next' Class='btn-primary'/>
                 <Button click={this.Submit} text='Submit' Class='btn-danger'/>
                </div>
+
                 </div>)
    }
  }
           
      const app= ( <div>
-               <Header info=<p>A URL shortener built with powerful tools to help you grow and protect your brand.
-               all you have to do is paste or type your long address or link. then click shorten button
-               and you get a short link</p>
-               title='Day13: Link Shortener'/>
+               <Header info=<p>This is a react app containing many JavaScript 
+               interview questions. <br/>it generate twenty questions for you at random in which you are to pick just one option.
+                also it provide good explanation on each question after submission</p>
+               title='Day18: JS Quiz App'/>
                <App data={data}/>
                <Footer/>
               </div>)
 
 ReactDOM.render(app, document.getElementById('root'));
-
-
 
 
     </script>
