@@ -17,4 +17,4 @@ This is the list of different App built using React.
 | Day12 |  [Thanks Card](https://maxwizardth.github.io/ReactProject/React/Day12_Project/thanksCard.html)|
 | Day13 |  [URL-Shortener](https://maxwizardth.github.io/ReactProject/React/Day13_Project/urlShortener.html)|
 | Day14 | [Text Editor]( https://maxwizardth.github.io/ReactProject/React/Day14_Project/textEditor.html)                                                                                                               |
-| Day15 |  [Thanks Card](https://maxwizardth.github.io/ReactProject/React/Day15_Project/thanksCard.html)|
+| Day15 |  [JavaScript Quiz](https://maxwizardth.github.io/ReactProject/React/Day15_Project/javaScriptQuiz.html)|
