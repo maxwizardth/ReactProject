@@ -11,7 +11,7 @@ This is the list of different App built using React.
 | Day6 |  [Holiday Country ](https://maxwizardth.github.io/ReactProject/React/Day6_Project/CountryHoliday.html)  |
 | Day7 | [Destined Country]( https://maxwizardth.github.io/ReactProject/React/Day7_Project/DestinyCountry.html)                                                                                                               |
 | Day8 |  [Calculator](https://maxwizardth.github.io/ReactProject/React/Day8_Project/calculator.html)|
-| Day9 | [Destined Country]( https://maxwizardth.github.io/ReactProject/React/Day7_Project/DestinyCountry.html)                                                                                                               |
-| Day10 |  [Loading.](https://github.com/maxwizardth/ReactProject/blob/main/React/Day8_Project/DestinyCountry.html)|
-| Day11 | [Destined Country]( https://maxwizardth.github.io/ReactProject/React/Day7_Project/DestinyCountry.html)                                                                                                               |
+| Day9 | [Dog Slide]( https://maxwizardth.github.io/ReactProject/React/Day9_Project/DogSlider.html)                                                                                                               |
+| Day10 |  [Quote Generator](https://maxwizardth.github.io/ReactProject/React/Day10_Project/quoteGenerator.html)|
+| Day11 | [loading]( https://maxwizardth.github.io/ReactProject/React/Day7_Project/DestinyCountry.html)                                                                                                               |
 | Day12 |  [Loading.](https://github.com/maxwizardth/ReactProject/blob/main/React/Day8_Project/DestinyCountry.https://git)|
