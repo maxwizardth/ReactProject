@@ -25,20 +25,18 @@
           crossorigin="anonymous" />
     <title>30 Days Of React Challenge</title>
     <style type="text/css">
-      
+
 pre{padding: 4px;
 background: #454;
 font-size: 15px;
 color: white;
 margin:9px;
-max-width:300px;
+max-width:330px;
 border-radius: 7px;
 }
 
-button{border: solid 2px;
-       outline: none;}
-
-#question{background:white;
+#buttons{padding-left:10px;}
+#question{background:#ccc;
       color:black;
       text-align:left;
       margin:15px;
@@ -56,8 +54,6 @@ body{background: #455;
             h5{margin: 2px;} 
 .fa{margin-left: 11px;color: white}
 #AnswerBox{display: none;}
-
-
 
     </style>
   </head>
@@ -151,10 +147,15 @@ const footerLogo=( <p>
 
 class Button extends React.Component{
   render(){
+    const btnStyle={margin:'4px',
+                    padding:'6px',
+                    outline:'none',
+                    borderRadius:'5px'}
   const {click,Class,text}=this.props
   return (<button type="button" 
            onClick={click}
-           className={Class}  
+           className={Class} 
+           style={btnStyle}  
            >{text}
            </button>)}
 }
@@ -168,19 +169,27 @@ class Question extends React.Component{
     return {data:props.data}
   }
    render(){
-    const {instruction,question,options,Answer,summary}=this.state.data
+    const {question,code,options,Answer,summary}=this.state.data
     
       return (
        <div id='question'>          
-          <h4>Question {this.props.name+1}</h4>
-          <h5>{instruction}</h5>
-          <pre>{question}</pre>
+          
+          <h5>{question}</h5>
+          <pre>{code}</pre>
           
           <div>
-          <input type="radio" name={this.props.name} value='A' onClick={this.props.click}/>A. {options.A}<br/>      
-          <input type="radio" name={this.props.name} value='B' onClick={this.props.click}/>B. {options.B}<br/>
-          <input type="radio" name={this.props.name} value='C' onClick={this.props.click}/>C. {options.C}<br/>
-          <input type="radio" name={this.props.name} value='D' onClick={this.props.click}/>D. {options.D}<br/>
+          <input type="radio" name={this.props.name} 
+          className='option' value='A' onClick={this.props.click}/>
+          A. {options.A}<br/>      
+          <input type="radio" name={this.props.name} 
+          className='option' value='B' onClick={this.props.click}/>
+          B. {options.B}<br/>
+          <input type="radio" name={this.props.name} 
+          className='option' value='C' onClick={this.props.click}/>
+          C. {options.C}<br/>
+          <input type="radio" name={this.props.name} 
+          className='option' value='D' onClick={this.props.click}/>
+          D. {options.D}<br/>
           </div>
           <div id='AnswerBox' className='Answer' 
           style={{display:`${this.props.show}`}}>
@@ -222,23 +231,25 @@ class App extends React.Component{
 
   }
 
-  Previous=()=>this.setState({number:this.state.number-1+6%6})
+  Previous=()=>this.setState({number:(this.state.number-1+data.length)%data.length})
 
-  Next=()=>this.setState({number:this.state.number+1%6})
+  Next=()=>this.setState({number:(this.state.number+1)%data.length})
   Submit=()=>this.setState({correction:'block'})
 
    render(){
     const index=this.state.number
      console.log(this.state)
-   return (<div style={{background:'#554',
+   return (<div style={{background:'#fff',
                         padding:'4px',
-                        textAlign:'center'}}>
+                        textAlign:'left'}}>
+               <h4>Question {index+1}</h4>
               <Question data={this.props.data[index]} name={index}
                key={index} click={this.userAnsers} show={this.state.correction}/>
+               <div id='buttons'>
                 <Button click={this.Previous} text='Previous' Class='btn-primary'/>
                 <Button click={this.Next} text='Next' Class='btn-primary'/>
                 <Button click={this.Submit} text='Submit' Class='btn-danger'/>
-               
+               </div>
                 </div>)
    }
  }
@@ -253,6 +264,9 @@ class App extends React.Component{
               </div>)
 
 ReactDOM.render(app, document.getElementById('root'));
+
+
+
 
     </script>
   </body>
