@@ -13,5 +13,5 @@ This is the list of different App built using React.
 | Day8 |  [Calculator](https://maxwizardth.github.io/ReactProject/React/Day8_Project/calculator.html)|
 | Day9 | [Dog Slide]( https://maxwizardth.github.io/ReactProject/React/Day9_Project/DogSlider.html)                                                                                                               |
 | Day10 |  [Quote Generator](https://maxwizardth.github.io/ReactProject/React/Day10_Project/quoteGenerator.html)|
-| Day11 | [loading]( https://maxwizardth.github.io/ReactProject/React/Day11_Project/CodeEditor.html)                                                                                                               |
-| Day12 |  [Loading.](https://maxwizardth.github.io/ReactProject/React/Day12_Project/thanksCard.html)|
+| Day11 | [Code Editor]( https://maxwizardth.github.io/ReactProject/React/Day11_Project/CodeEditor.html)                                                                                                               |
+| Day12 |  [Thanks Card](https://maxwizardth.github.io/ReactProject/React/Day12_Project/thanksCard.html)|
