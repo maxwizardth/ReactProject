@@ -139,12 +139,15 @@ const footerLogo=( <p>
           }
 
 
+//function to shuffle array of digits
+const shuffle=(array)=>array.sort(()=>Math.random()-0.5)
+const newData=shuffle(data).slice(0,20)
+ const btnStyle={margin:'4px',
+                  padding:'6px',
+                  outline:'none',
+                  borderRadius:'5px'}
 class Button extends React.Component{
-  render(){
-    const btnStyle={margin:'4px',
-                    padding:'6px',
-                    outline:'none',
-                    borderRadius:'5px'}
+  render(){ 
   const {click,Class,text}=this.props
   return (<button type="button" 
            onClick={click}
@@ -157,12 +160,12 @@ class Button extends React.Component{
 class Question extends React.Component{
   constructor(props){
     super(props)
-    this.state={question:''}
+    this.state={question:'',data:''}
   }
   static getDerivedStateFromProps(props,state){
     return {data:props.data}
   }
-  
+  /*function to monitor and display selected option by user*/
   componentDidMount(){
     const optionTree={'A':0,'B':1,'C':2,'D':3}
     const optionSelected=this.props.userAnswer
@@ -171,33 +174,33 @@ class Question extends React.Component{
     document.querySelectorAll('.option')[selectedInputIndex].checked=true
   }
 }
+  /* function to toggle the explanation to each question*/
   showExplain=()=>{
     let initialMode=document.querySelector('#summary').style.display;
     const newMode=initialMode=='none'?'block':'none'
     document.querySelector('#summary').style.display=newMode
   }
+
    render(){
     const {question,code,options,Answer,summary}=this.state.data
     
       return (
-       <div id='question'>          
-          
+       <div id='question'>           
           <h5>{question}</h5>
           <pre>{code}</pre>
-          
           <div>
-          <input type="radio" name={this.props.name} 
-          className='option' value='A' onClick={this.props.click}/>
-          A. {options.A}<br/>      
-          <input type="radio" name={this.props.name} 
-          className='option' value='B' onClick={this.props.click}/>
-          B. {options.B}<br/>
-          <input type="radio" name={this.props.name} 
-          className='option' value='C' onClick={this.props.click}/>
-          C. {options.C}<br/>
-          <input type="radio" name={this.props.name} 
-          className='option' value='D' onClick={this.props.click}/>
-          D. {options.D}<br/>
+            <input type="radio" name={this.props.name} 
+              className='option' value='A' onClick={this.props.click}/>
+              A. {options.A}<br/>      
+            <input type="radio" name={this.props.name} 
+              className='option' value='B' onClick={this.props.click}/>
+              B. {options.B}<br/>
+            <input type="radio" name={this.props.name} 
+              className='option' value='C' onClick={this.props.click}/>
+              C. {options.C}<br/>
+            <input type="radio" name={this.props.name} 
+              className='option' value='D' onClick={this.props.click}/>
+               D. {options.D}<br/>
           </div>
           <div id='AnswerBox' className='Answer' 
           style={{display:`${this.props.show}`}}>
@@ -210,18 +213,71 @@ class Question extends React.Component{
 
 
 
+/* below the state comprises of five elements, userAnswers,Answers,score,number and correction*/
+/* userAnswers:keep userAnswers,Answers:store correct Answers
+   number:index of active question,score: user score,
+   correction:toggle the display of correction*/  
+
+
+
 class App extends React.Component{
   constructor(props){
     super(props)
-    this.state={userAnsers:Array(30),Answers:Array(30),
-      score:0,number:0,correction:'none'}
+    this.state={userAnsers:Array(20),Answers:Array(20),
+      score:0,number:0,correction:'none',time:{minute:2,seconds:0}}
   }
+
+  /*pass the data from props to state to get all correct Answers*/
   static getDerivedStateFromProps(props,state){
    const data=props.data
+   console.log(data)
    const Answers=data.map((question)=>question.Answer)
    return {Answers:Answers}
   }
- 
+
+  componentDidMount(){
+    setInterval(this.timer,1000)
+  }
+  
+     /*Time keeping codes*/
+
+ timer=()=>{
+  /*getting the minutes and seconds */
+  var {minute,seconds}=this.state.time
+  /*check wether time is over*/
+  if(minute==0&&seconds==1){
+    document.getElementById('submitbtn').click();
+    document.getElementById('modalTitle').innerHTML='Your Time is Up'}
+
+
+    /*convert minute to seconds*/
+    if(seconds==0||seconds==='00'){
+      minute--;
+      seconds=59
+    }
+
+    else{
+      seconds--;
+    if(String(minute).length==1){
+      minute='0'+String(minute)
+   }
+    
+    if(String(seconds).length==1){
+      seconds='0'+String(seconds)
+    }
+  }
+
+  this.setState({time:{minute:minute,seconds:seconds}})
+   /* calculating the width bar with respect to time left*/
+  const width=100*(minute*60+seconds*1)/1200
+    const progressBar=document.getElementsByClassName('progress-bar')[0];
+    progressBar.style.width=width+'%'
+    progressBar.style.backgroundColor=width<10?'red':'blue'
+    
+      } 
+  
+/*function to shuffle array of digits*/
+shuffle=(array)=>array.sort(()=>Math.random()-0.5)
 
  marker=()=>{
     let score=0
@@ -238,23 +294,45 @@ class App extends React.Component{
      this.marker()
     this.setState({userAnsers:this.users})
 
-  }
-   
+  }  
 
   Previous=()=>{
+    const data=this.props.data
     this.setState({number:(this.state.number-1+data.length)%data.length})
 }
 
-
-  Next=()=>this.setState({number:(this.state.number+1)%data.length})
-  Submit=()=>this.setState({correction:'block'})
+  Next=()=>this.setState({number:(this.state.number+1)%this.props.data.length})
+  Submit=(event)=>{
+  event.target.style.display='none'
+  this.setState({correction:'block'})}
    
    render(){
+    const {minute,seconds}=this.state.time
     const index=this.state.number
      console.log(this.state)
-   return (<div style={{background:'#fff',
-                        padding:'4px',
-                        textAlign:'left'}}>
+      return (<div style={{background:'#fff',
+                           padding:'4px',
+                           textAlign:'left'}}>
+                <h3 className='sticky-top ' 
+               style={{background:'rgb(5, 136, 176)',color:'white',
+                       padding:'20px',
+                       margin:'-4px 0px 8px -6px',
+                       width:'101%'}}>
+               <center>JavaScript Quiz</center>
+               </h3>
+               <div className="container ">
+                 <h6 className="sticky-top" id="time" ><strong>
+                  Time left:
+                 <input type="Number" id="minute" value={minute} readOnly/>:
+                 <input type="number" id="seconds" value={seconds} readOnly/> 
+                 </strong></h6>
+                <div className="progress ">
+              
+               <div className="progress-bar" style={{width:'100%'}}></div>
+               </div>
+               </div>
+
+
                <h4 style={{marginLeft:'9px'}}>Question {index+1}</h4>
               <Question data={this.props.data[index]} name={index}
                key={index} click={this.userAnsers} 
@@ -263,8 +341,41 @@ class App extends React.Component{
                <div id='buttons'>
                 <Button click={this.Previous} text='Previous' Class='btn-primary'/>
                 <Button click={this.Next} text='Next' Class='btn-primary'/>
-                <Button click={this.Submit} text='Submit' Class='btn-danger'/>
-               </div>
+                <button onClick={this.Submit} className='btn-danger' 
+                data-bs-toggle="modal" data-bs-target="#myModal"
+                style={btnStyle}>Submit</button>
+                <div id="startAgain">
+                <a href="" onclick="location.reload()">Start Again</a>
+                </div>
+
+                <div className="modal" id="myModal">
+                  <div className="modal-dialog modal-dialog-scrollable">
+                    <div className="modal-content">        
+                    <div className="modal-header text-center">
+                      <h4 className="modal-title">YOUR RESULT</h4>
+                      <button type="button" className="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                       
+                      <div className="modal-body text-center">
+                      <h3 className="text-center">Congratulations!!</h3>
+                      <p>You have completed the quiz</p>
+                      <hr/>
+                      <h6 className="text-center">Result</h6>
+                      <hr/>
+                      <h4>{this.state.score}/20</h4>
+                      </div>
+                
+                    
+                    <div className="modal-footer">
+                      <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    </div>
+              
+                    </div>
+                    </div>
+                    </div>
+
+
+                    </div>
 
                 </div>)
    }
@@ -275,11 +386,14 @@ class App extends React.Component{
                interview questions. <br/>it generate twenty questions for you at random in which you are to pick just one option.
                 also it provide good explanation on each question after submission</p>
                title='Day18: JS Quiz App'/>
-               <App data={data}/>
+               
+               <App data={newData}/>
                <Footer/>
               </div>)
 
 ReactDOM.render(app, document.getElementById('root'));
+
+
 
 
     </script>
