@@ -243,7 +243,7 @@ class App extends React.Component{
   constructor(props){
     super(props)
     this.state={userAnsers:Array(20),Answers:Array(20),
-      score:0,number:0,correction:'none',time:{minute:2,seconds:0}}
+      score:0,number:0,correction:'none',time:{minute:20,seconds:0}}
   }
 
   /*pass the data from props to state to get all correct Answers*/
@@ -339,16 +339,15 @@ shuffle=(array)=>array.sort(()=>Math.random()-0.5)
                        width:'101%'}}>
                <center>JavaScript Quiz</center>
                </h3>
-               <div className="container ">
-                 <h6 className="sticky-top" id="time" ><strong>
+               <div className="container sticky-top">
+                 <h6 id="time" ><strong>
                   Time left:
                  <input type="Number" id="minute" value={minute} readOnly/>:
                  <input type="number" id="seconds" value={seconds} readOnly/> 
                  </strong></h6>
-                <div className="progress ">
-              
-               <div className="progress-bar" style={{width:'100%'}}></div>
-               </div>
+                  <div className="progress ">
+                     <div className="progress-bar" style={{width:'100%'}}></div>
+                  </div>
                </div>
 
 
