@@ -266,7 +266,7 @@ class App extends React.Component{
   /*check wether time is over*/
   if(minute==0&&seconds==1){
     document.getElementById('submitbtn').click();
-    document.getElementById('modalTitle').innerHTML='Your Time is Up'}
+    document.getElementById('respondTime').innerHTML='Your Time is Up'}
 
 
     /*convert minute to seconds*/
@@ -377,7 +377,7 @@ shuffle=(array)=>array.sort(()=>Math.random()-0.5)
                        
                       <div className="modal-body text-center">
                       <h3 className="text-center">Congratulations!!</h3>
-                      <p>You have completed the quiz</p>
+                      <p id='respondTime'>You have completed the quiz</p>
                       <hr/>
                       <h6 className="text-center">Result</h6>
                       <hr/>
