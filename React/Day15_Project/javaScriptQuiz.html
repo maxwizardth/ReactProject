@@ -258,6 +258,7 @@ class App extends React.Component{
     setInterval(this.timer,1000)
   }
   
+
      /*Time keeping codes*/
 
  timer=()=>{
@@ -266,7 +267,8 @@ class App extends React.Component{
   /*check wether time is over*/
   if(minute==0&&seconds==1){
     document.getElementById('submitbtn').click();
-    document.getElementById('respondTime').innerHTML='Your Time is Up'}
+    document.getElementById('respondTime').innerHTML='Your Time is Up'
+   }
 
 
     /*convert minute to seconds*/
@@ -277,27 +279,24 @@ class App extends React.Component{
 
     else{
       seconds--;
-    if(String(minute).length==1){
-      minute='0'+String(minute)
-   }
+      if(String(minute).length==1){
+      minute='0'+String(minute)}
     
-    if(String(seconds).length==1){
-      seconds='0'+String(seconds)
-    }
-  }
-
+      if(String(seconds).length==1){
+      seconds='0'+String(seconds)}
+      }
+     if(minute<0){
+       minute='00';
+       seconds='00'
+     }
   this.setState({time:{minute:minute,seconds:seconds}})
    /* calculating the width bar with respect to time left*/
-  const width=100*(minute*60+seconds*1)/1200
+    const width=100*(minute*60+seconds*1)/1200
     const progressBar=document.getElementsByClassName('progress-bar')[0];
     progressBar.style.width=width+'%'
     progressBar.style.backgroundColor=width<10?'red':'blue'
     
       } 
-  
-/*function to shuffle array of digits*/
-shuffle=(array)=>array.sort(()=>Math.random()-0.5)
-
  marker=()=>{
     let score=0
     this.state.Answers.forEach((answer,index)=>{
