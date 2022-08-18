@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500|Roboto:300,400,500&display=swap"
+      rel="stylesheet"/>
+    <meta name="description"
+      content="Web site created using create-react-app"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--<link href="bootstrap.min.css" rel="stylesheet">-->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" 
+  href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" 
+  integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" 
+  crossorigin="anonymous">
+    <!-- fontawesome cdn For Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>JavsScript Quiz</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+    <style type="text/css">
+  
+pre{padding: 4px;
+background: #454;
+font-size: 15px;
+color: white;
+margin:9px;
+max-width:330px;
+border-radius: 7px;
+}
+
+#buttons{padding-left:10px;}
+#question{background:#ccc;
+      color:black;
+      text-align:left;
+      margin:15px;
+      border-radius:15px;
+      padding:20px;}
+
+/* On smaller screens, decrease text size */
+@media only screen and (min-width: 500px) {
+ }
+
+body{background: #455;
+     border:15px solid transparent;
+     margin:0;
+     border-image:url('https://github.com/maxwizardth/ReactProject/blob/main/React/Media/images%20(1).jpeg?raw=true') 40% round;}    
+            h5{margin: 2px;} 
+.fa{margin-left: 11px;color: white}
+#AnswerBox{display: none;}
+#summary{display: none;}
+hr{border:solid white 1px;}
+    #seconds,#minute{width: 50px;margin: 0px;
+      border: solid 1px white;}
+      #minute{text-align: center;}
+      .progress{border-radius: 22px;
+        margin-bottom: 11px;}
+        .subject{display: none;}
+        #myModal{
+          text-align: center;
+          background: #455990;
+          padding: 9px;
+          height: 60%;}
+        .modal-content{background: rgb(5, 136, 176);
+          color: white;}
+        .modal-title{margin-left: 31px;
+                    text-align: center;}
+    #startAgain{
+       text-align: center;
+
+    }
+    </style>
+  </head>
+
+  <body>
+    <div id="root"> </div>
+  <script src="quizData.js"></script>
+    <script crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"> 
+    </script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+
+     const myImage = 'https://github.com/maxwizardth/ReactProject/blob/main/React/Media/Desert.jpg?raw=true'
+
+class Header extends React.Component{
+
+  render(){
+    const headerStyle={background:`url(${myImage})`,
+        color:'white',
+        padding:'5px 0px 3px 18px',
+        margin:'0px'}
+    const {title,info}=this.props
+        const h2Style={textAlign:'center',
+                marginTop:'3px'}
+    return (<div style={headerStyle}>
+              <h2 style={h2Style}>
+               Welcome to 30Days Of React Challenge
+              </h2> 
+                 
+                   <h3>{title}</h3>
+                    {info}
+                 
+        
+             </div>)
+
+  }
+}
+
+
+
+class Footer extends React.Component{
+render(){
+const contact=(<div>
+                <h5>Call Hours: 9am-9pm (Mon-Fri)</h5>
+                <span><a href="https://">
+                    <i className="fa fa-phone logo" aria-hidden="true">+2349153036869</i>
+                </a></span>
+                <span><a href="https://">
+                   <i className="fa fa-envelope logo" aria-hidden="true"> abdullahioladejo1@gmail.com</i>
+                 </a></span>
+               </div>)
+
+const footerLogo=( <p>
+                    <a href="https://web.facebook.com/abdullahi.oladejo.10">
+                    <i className="fa fa-facebook-square logo" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://wa.me/"><i className="fa fa-whatsapp logo" aria-hidden="true"></i>
+                    </a>
+              <a href="https://twitter.com/oladejoabdulla7">
+              <i className="fa fa-twitter logo" aria-hidden="true"></i>
+              </a>
+                    <a href="https://www.instagram.com/maxwizardth/">
+                    <i className="fa fa-instagram logo" aria-hidden="true"></i>
+                    </a>
+              <a href="https://linkedIn.com/"><i className="fa fa-linkedin-square logo" aria-hidden="true">
+              </i>
+              </a>
+             <a href="https://github.com/maxwizardth">
+             <i className="fa fa-github logo" aria-hidden="true"></i>
+             </a><br/>
+           <span id="copy">
+              <small>Copyright© all reserved by Maxwizard</small>
+            </span>
+                  </p>)
+
+        return (<footer style={{textAlign:'center',
+                    color:'white',
+                    background:'#0588b0',
+                    padding:'5px'}}>
+                <h2>Connect with Us<hr/></h2>
+               {contact}
+               {footerLogo}
+              </footer>)}
+          }
+
+
+//function to shuffle array of digits
+const shuffle=(array)=>array.sort(()=>Math.random()-0.5)
+const newData=shuffle(data).slice(0,20)
+ const btnStyle={margin:'4px',
+                  padding:'6px',
+                  outline:'none',
+                  borderRadius:'5px'}
+class Button extends React.Component{
+  render(){ 
+  const {click,Class,text}=this.props
+  return (<button type="button" 
+           onClick={click}
+           className={Class} 
+           style={btnStyle}  
+           >{text}
+           </button>)}
+}
+
+class Question extends React.Component{
+  constructor(props){
+    super(props)
+    this.state={question:'',data:''}
+  }
+  static getDerivedStateFromProps(props,state){
+    return {data:props.data}
+  }
+  /*function to monitor and display selected option by user*/
+  componentDidMount(){
+    const optionTree={'A':0,'B':1,'C':2,'D':3}
+    const optionSelected=this.props.userAnswer
+    if(optionSelected){
+    const selectedInputIndex=optionTree[optionSelected]
+    document.querySelectorAll('.option')[selectedInputIndex].checked=true
+  }
+}
+  /* function to toggle the explanation to each question*/
+  showExplain=()=>{
+    let initialMode=document.querySelector('#summary').style.display;
+    const newMode=initialMode=='none'?'block':'none'
+    document.querySelector('#summary').style.display=newMode
+  }
+
+   render(){
+    const {question,code,options,Answer,summary}=this.state.data
+    
+      return (
+       <div id='question'>           
+          <h5>{question}</h5>
+          <pre>{code}</pre>
+          <div>
+            <input type="radio" name={this.props.name} 
+              className='option' value='A' onClick={this.props.click}/>
+              A. {options.A}<br/>      
+            <input type="radio" name={this.props.name} 
+              className='option' value='B' onClick={this.props.click}/>
+              B. {options.B}<br/>
+            <input type="radio" name={this.props.name} 
+              className='option' value='C' onClick={this.props.click}/>
+              C. {options.C}<br/>
+            <input type="radio" name={this.props.name} 
+              className='option' value='D' onClick={this.props.click}/>
+               D. {options.D}<br/>
+          </div>
+          <div id='AnswerBox' className='Answer' 
+          style={{display:`${this.props.show}`}}>
+          <h5>Answer: {Answer}</h5>
+          <Button text='Show explanation' click={this.showExplain}/>
+          <p id='summary' style={{display:'none'}}>{summary}</p>
+          </div>
+       </div>) }
+   }
+
+
+
+/* below the state comprises of five elements, userAnswers,Answers,score,number and correction*/
+/* userAnswers:keep userAnswers,Answers:store correct Answers
+   number:index of active question,score: user score,
+   correction:toggle the display of correction*/  
+
+
+
+class App extends React.Component{
+  constructor(props){
+    super(props)
+    this.state={userAnsers:Array(20),Answers:Array(20),
+      score:0,number:0,correction:'none',time:{minute:20,seconds:0}}
+  }
+
+  /*pass the data from props to state to get all correct Answers*/
+  static getDerivedStateFromProps(props,state){
+   const data=props.data
+   console.log(data)
+   const Answers=data.map((question)=>question.Answer)
+   return {Answers:Answers}
+  }
+
+  componentDidMount(){
+    setInterval(this.timer,1000)
+  }
+  
+
+     /*Time keeping codes*/
+
+ timer=()=>{
+  /*getting the minutes and seconds */
+  var {minute,seconds}=this.state.time
+  /*check wether time is over*/
+  if(minute==0&&seconds==1){
+    document.getElementById('submitbtn').click();
+    document.getElementById('respondTime').innerHTML='Your Time is Up'
+   }
+
+
+    /*convert minute to seconds*/
+    if(seconds==0||seconds==='00'){
+      minute--;
+      seconds=59
+    }
+
+    else{
+      seconds--;
+      if(String(minute).length==1){
+      minute='0'+String(minute)}
+    
+      if(String(seconds).length==1){
+      seconds='0'+String(seconds)}
+      }
+     if(minute<0){
+       minute='00';
+       seconds='00'
+     }
+  this.setState({time:{minute:minute,seconds:seconds}})
+   /* calculating the width bar with respect to time left*/
+    const width=100*(minute*60+seconds*1)/1200
+    const progressBar=document.getElementsByClassName('progress-bar')[0];
+    progressBar.style.width=width+'%'
+    progressBar.style.backgroundColor=width<10?'red':'blue'
+    
+      } 
+ marker=()=>{
+    let score=0
+    this.state.Answers.forEach((answer,index)=>{
+      score+=answer===this.state.userAnsers[index]?1:0
+    })
+    this.setState({score:score})
+  }
+   users=Array(30)
+
+   userAnsers=(event)=>{
+    const element=  event.target
+    this.users[element.name]=element.value
+     this.marker()
+    this.setState({userAnsers:this.users})
+
+  }  
+
+  Previous=()=>{
+    const data=this.props.data
+    this.setState({number:(this.state.number-1+data.length)%data.length})
+}
+
+  Next=()=>this.setState({number:(this.state.number+1)%this.props.data.length})
+  Submit=(event)=>{
+  event.target.style.display='none'
+  this.setState({correction:'block'})}
+   
+   render(){
+    const {minute,seconds}=this.state.time
+    const index=this.state.number
+     console.log(this.state)
+      return (<div style={{background:'#fff',
+                           padding:'4px',
+                           textAlign:'left'}}>
+                <h3 className='sticky-top ' 
+               style={{background:'rgb(5, 136, 176)',color:'white',
+                       padding:'20px',
+                       margin:'-4px 0px 8px -6px',
+                       width:'101%'}}>
+               <center>JavaScript Quiz</center>
+               </h3>
+               <div className="container sticky-top">
+                 <h6 id="time" ><strong>
+                  Time left:
+                 <input type="Number" id="minute" value={minute} readOnly/>:
+                 <input type="number" id="seconds" value={seconds} readOnly/> 
+                 </strong></h6>
+                  <div className="progress ">
+                     <div className="progress-bar" style={{width:'100%'}}></div>
+                  </div>
+               </div>
+
+
+               <h4 style={{marginLeft:'9px'}}>Question {index+1}</h4>
+              <Question data={this.props.data[index]} name={index}
+               key={index} click={this.userAnsers} 
+               show={this.state.correction}
+               userAnswer={this.state.userAnsers[index]}/>
+               <div id='buttons'>
+                <Button click={this.Previous} text='Previous' Class='btn-primary'/>
+                <Button click={this.Next} text='Next' Class='btn-primary'/>
+                <button onClick={this.Submit} className='btn-danger' 
+                data-bs-toggle="modal" data-bs-target="#myModal"
+                style={btnStyle} id='submitbtn'>Submit</button>
+                <div id="startAgain">
+                <a href="" onclick="location.reload()">Start Again</a>
+                </div>
+
+                <div className="modal" id="myModal">
+                  <div className="modal-dialog modal-dialog-scrollable">
+                    <div className="modal-content">        
+                    <div className="modal-header text-center">
+                      <h4 className="modal-title">YOUR RESULT</h4>
+                      <button type="button" className="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                       
+                      <div className="modal-body text-center">
+                      <h3 className="text-center">Congratulations!!</h3>
+                      <p id='respondTime'>You have completed the quiz</p>
+                      <hr/>
+                      <h6 className="text-center">Result</h6>
+                      <hr/>
+                      <h4>{this.state.score}/20</h4>
+                      </div>
+                
+                    
+                    <div className="modal-footer">
+                      <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    </div>
+              
+                    </div>
+                    </div>
+                    </div>
+
+
+                    </div>
+
+                </div>)
+   }
+ }
+          
+     const app= ( <div>
+               <Header info=<p>This is a react app containing many JavaScript 
+               interview questions. <br/>it generate twenty questions for you at random in which you are to pick just one option.
+                also it provide good explanation on each question after submission</p>
+               title='Day18: JS Quiz App'/>
+               
+               <App data={newData}/>
+               <Footer/>
+              </div>)
+
+ReactDOM.render(app, document.getElementById('root'));
+
+
+
+
+    </script>
+  </body>
+</html>
