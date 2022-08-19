@@ -21,14 +21,6 @@
 
     <style type="text/css">
   
-pre{padding: 4px;
-background: #454;
-font-size: 15px;
-color: white;
-margin:9px;
-max-width:330px;
-border-radius: 7px;
-}
 
 #buttons{padding-left:10px;}
 #question{background:#ccc;
@@ -37,11 +29,7 @@ border-radius: 7px;
       margin:15px;
       border-radius:15px;
       padding:20px;}
-
 /* On smaller screens, decrease text size */
-@media only screen and (min-width: 500px) {
- }
-
 body{background: #455;
      border:15px solid transparent;
      margin:0;
@@ -57,15 +45,7 @@ hr{border:solid white 1px;}
       .progress{border-radius: 22px;
         margin-bottom: 11px;}
         .subject{display: none;}
-        #myModal{
-          text-align: center;
-          background: #455990;
-          padding: 9px;
-          height: 60%;}
-        .modal-content{background: rgb(5, 136, 176);
-          color: white;}
-        .modal-title{margin-left: 31px;
-                    text-align: center;}
+     
     #startAgain{
        text-align: center;
 
@@ -167,6 +147,10 @@ const newData=shuffle(data).slice(0,20)
                   borderRadius:'5px'}
 class Button extends React.Component{
   render(){ 
+  const btnStyle={margin:'4px',
+                  padding:'6px',
+                  outline:'none',
+                  borderRadius:'5px'}
   const {click,Class,text}=this.props
   return (<button type="button" 
            onClick={click}
@@ -176,70 +160,174 @@ class Button extends React.Component{
            </button>)}
 }
 
+
+class Options extends React.Component{
+  constructor(props){
+    super(props)
+    this.state={data:''}
+    this.A=React.createRef()
+    this.B=React.createRef()
+    this.C=React.createRef()
+    this.D=React.createRef()}
+  static getDerivedStateFromProps(props,state){
+    return {data:props.data}
+  }     
+
+  /*function to monitor and display selected option by user*/
+  componentDidMount(){
+    const optionSelected=this.props.userAnswer
+    if(optionSelected){
+    this[optionSelected].current.checked=true}
+     }
+
+  render(){
+    const options=this.state.data    
+      return (
+          <div>
+            <input type="radio" name={this.props.name} 
+              className='option' value='A' onClick={this.props.click}
+              ref={this.A}/>
+              A. {options.A}<br/>      
+            <input type="radio" name={this.props.name} 
+              className='option' value='B' onClick={this.props.click}
+              ref={this.B}/>
+              B. {options.B}<br/>
+            <input type="radio" name={this.props.name} 
+              className='option' value='C' onClick={this.props.click}
+              ref={this.C}/>
+              C. {options.C}<br/>
+            <input type="radio" name={this.props.name} 
+              className='option' value='D' onClick={this.props.click}
+              ref={this.D}/>
+               D. {options.D}<br/>
+          </div>)
+   }
+}
+
 class Question extends React.Component{
   constructor(props){
     super(props)
-    this.state={question:'',data:''}
-  }
+    this.state={question:'',data:''}}
+  
+  explanationBox=React.createRef()
   static getDerivedStateFromProps(props,state){
     return {data:props.data}
   }
-  /*function to monitor and display selected option by user*/
-  componentDidMount(){
-    const optionTree={'A':0,'B':1,'C':2,'D':3}
-    const optionSelected=this.props.userAnswer
-    if(optionSelected){
-    const selectedInputIndex=optionTree[optionSelected]
-    document.querySelectorAll('.option')[selectedInputIndex].checked=true
-  }
-}
+
+ 
   /* function to toggle the explanation to each question*/
   showExplain=()=>{
-    let initialMode=document.querySelector('#summary').style.display;
+    let initialMode=this.explanationBox.current.style.display;
     const newMode=initialMode=='none'?'block':'none'
-    document.querySelector('#summary').style.display=newMode
+    this.explanationBox.current.style.display=newMode
   }
 
    render(){
+    const codeStyle={padding: '4px',
+           background: '#454',
+           fontSize: '15px',
+           color: 'white',
+           margin:'9px',
+           maxWidth:'330px',
+           borderRadius: '7px',}
+
     const {question,code,options,Answer,summary}=this.state.data
-    
       return (
        <div id='question'>           
           <h5>{question}</h5>
-          <pre>{code}</pre>
-          <div>
-            <input type="radio" name={this.props.name} 
-              className='option' value='A' onClick={this.props.click}/>
-              A. {options.A}<br/>      
-            <input type="radio" name={this.props.name} 
-              className='option' value='B' onClick={this.props.click}/>
-              B. {options.B}<br/>
-            <input type="radio" name={this.props.name} 
-              className='option' value='C' onClick={this.props.click}/>
-              C. {options.C}<br/>
-            <input type="radio" name={this.props.name} 
-              className='option' value='D' onClick={this.props.click}/>
-               D. {options.D}<br/>
-          </div>
+          <pre style={codeStyle}>{code}</pre>
+          <Options click={this.props.click} name={this.props.name} 
+          data={options} userAnswer={this.props.userAnswer}/>
           <div id='AnswerBox' className='Answer' 
           style={{display:`${this.props.show}`}}>
           <h5>Answer: {Answer}</h5>
           <Button text='Show explanation' click={this.showExplain}/>
-          <p id='summary' style={{display:'none'}}>{summary}</p>
+          <p id='summary' style={{display:'none'}} 
+          ref={this.explanationBox}>
+          {summary}</p>
           </div>
        </div>) }
    }
+   
+   const TimerBox=(props)=>{
+    const {minute,seconds}=props
+    const width=100*(minute*60+seconds*1)/1200
+    const progressWidth=String(width)+'%'
+    const Color=width<10?'red':'blue'
 
+  return (<div className=" TimerBox"
+               style={{background:'white',                
+                      margin:'15px 0px 0px 0x',
+                      padding:'22px',
+                      color:'black',
+                      }}>
+                 <h6 id="time" ><strong>
+                  Time left:
+                  <input type="Number" id="minute" value={minute} readOnly/>:
+                  <input type="number" id="seconds" value={seconds} readOnly/> 
+                  </strong>
+                 </h6>
+                 <div className="progress ">
+                  <div className="progress-bar" 
+                    style={{width:progressWidth,
+                            background:Color
+                }}></div>
+                 </div>
+                </div>)}
+              
+              class ResultBox extends React.Component{
+  constructor(props){
+  super(props)
+  }
+render(){
+     const modalStyle={
+          textAlign: 'center',
+          background: '#455990',
+          padding: '9px',
+          height: '60%'}
 
-
-/* below the state comprises of five elements, userAnswers,Answers,score,number and correction*/
-/* userAnswers:keep userAnswers,Answers:store correct Answers
+    const contentStyle={
+          background: 'rgb(5, 136, 176)',
+          color: 'white'}
+    const titleStyle={marginLeft: '31px',
+                    textAlign: 'center'}
+  const score=this.props.score
+     return (<div className="modal" id="myModal" 
+                  style={modalStyle}>
+                  <div className="modal-dialog modal-dialog-scrollable">
+                    <div className="modal-content" 
+                     style={contentStyle}>        
+                      <div className="modal-header text-center">
+                       <h4 className="modal-title" 
+                            style={titleStyle}>YOUR RESULT</h4>
+                       <button type="button" className="btn-close"
+                         data-bs-dismiss="modal"></button>
+                      </div>
+                       
+                      <div className="modal-body text-center">
+                        <h3 className="text-center">Congratulations!!</h3>
+                        <p id='respondTime'>You have completed the quiz</p>
+                        <hr/>
+                        <h6 className="text-center">Result</h6>
+                        <hr/>
+                        <h4>{score}/20</h4>
+                      </div>
+                      <div className="modal-footer">
+                        <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>)
+              }
+            }
+            
+            
+/* below the state comprises of five elements, userAnswers,Answers,score,number and correction
+ userAnswers:keep userAnswers,Answers:store correct Answers
    number:index of active question,score: user score,
    correction:toggle the display of correction*/  
 
-
-
-class App extends React.Component{
+class JavaScriptQuiz extends React.Component{
   constructor(props){
     super(props)
     this.state={userAnsers:Array(20),Answers:Array(20),
@@ -249,7 +337,7 @@ class App extends React.Component{
   /*pass the data from props to state to get all correct Answers*/
   static getDerivedStateFromProps(props,state){
    const data=props.data
-   console.log(data)
+   
    const Answers=data.map((question)=>question.Answer)
    return {Answers:Answers}
   }
@@ -258,31 +346,30 @@ class App extends React.Component{
     setInterval(this.timer,1000)
   }
   
-
      /*Time keeping codes*/
 
  timer=()=>{
   /*getting the minutes and seconds */
   var {minute,seconds}=this.state.time
   /*check wether time is over*/
-  if(minute==0&&seconds==1){
+  if(minute==='00'&&seconds==='01'){
     document.getElementById('submitbtn').click();
     document.getElementById('respondTime').innerHTML='Your Time is Up'
    }
 
 
     /*convert minute to seconds*/
-    if(seconds==0||seconds==='00'){
+    if(seconds===0||seconds==='00'){
       minute--;
       seconds=59
     }
 
     else{
       seconds--;
-      if(String(minute).length==1){
+      if(String(minute).length===1){
       minute='0'+String(minute)}
     
-      if(String(seconds).length==1){
+      if(String(seconds).length===1){
       seconds='0'+String(seconds)}
       }
      if(minute<0){
@@ -290,13 +377,10 @@ class App extends React.Component{
        seconds='00'
      }
   this.setState({time:{minute:minute,seconds:seconds}})
-   /* calculating the width bar with respect to time left*/
-    const width=100*(minute*60+seconds*1)/1200
-    const progressBar=document.getElementsByClassName('progress-bar')[0];
-    progressBar.style.width=width+'%'
-    progressBar.style.backgroundColor=width<10?'red':'blue'
+   
     
       } 
+
  marker=()=>{
     let score=0
     this.state.Answers.forEach((answer,index)=>{
@@ -309,7 +393,7 @@ class App extends React.Component{
    userAnsers=(event)=>{
     const element=  event.target
     this.users[element.name]=element.value
-     this.marker()
+    this.marker()
     this.setState({userAnsers:this.users})
 
   }  
@@ -320,37 +404,26 @@ class App extends React.Component{
 }
 
   Next=()=>this.setState({number:(this.state.number+1)%this.props.data.length})
-  Submit=(event)=>{
-  event.target.style.display='none'
-  this.setState({correction:'block'})}
+  Submit=(event)=>{event.target.style.display='none'
+                 this.setState({correction:'block'})}
    
    render(){
     const {minute,seconds}=this.state.time
     const index=this.state.number
-     console.log(this.state)
-      return (<div style={{background:'#fff',
+    return (<div style={{background:'#fff',
                            padding:'4px',
                            textAlign:'left'}}>
-                <h3 className='sticky-top ' 
-               style={{background:'rgb(5, 136, 176)',color:'white',
-                       padding:'20px',
+              <div className='sticky-top ' 
+                 style={{background:'rgb(5, 136, 176)',
+                        color:'white',
                        margin:'-4px 0px 8px -6px',
-                       width:'101%'}}>
-               <center>JavaScript Quiz</center>
-               </h3>
-               <div className="container sticky-top">
-                 <h6 id="time" ><strong>
-                  Time left:
-                 <input type="Number" id="minute" value={minute} readOnly/>:
-                 <input type="number" id="seconds" value={seconds} readOnly/> 
-                 </strong></h6>
-                  <div className="progress ">
-                     <div className="progress-bar" style={{width:'100%'}}></div>
-                  </div>
-               </div>
+                       width:'102%'}}>
+                <h3 style={{padding:'20px'}}><center>JavaScript Quiz</center></h3>
+               <TimerBox minute={minute} seconds={seconds}/>
+              </div>
 
 
-               <h4 style={{marginLeft:'9px'}}>Question {index+1}</h4>
+              <h4 style={{marginLeft:'9px'}}>Question {index+1}</h4>
               <Question data={this.props.data[index]} name={index}
                key={index} click={this.userAnsers} 
                show={this.state.correction}
@@ -362,51 +435,31 @@ class App extends React.Component{
                 data-bs-toggle="modal" data-bs-target="#myModal"
                 style={btnStyle} id='submitbtn'>Submit</button>
                 <div id="startAgain">
-                <a href="" onclick="location.reload()">Start Again</a>
+                <a href='#' onClick={()=>"location.reload()"}>Start Again</a>
                 </div>
+               <ResultBox score={this.state.score}/>
+              </div>
 
-                <div className="modal" id="myModal">
-                  <div className="modal-dialog modal-dialog-scrollable">
-                    <div className="modal-content">        
-                    <div className="modal-header text-center">
-                      <h4 className="modal-title">YOUR RESULT</h4>
-                      <button type="button" className="btn-close" data-bs-dismiss="modal"></button>
-                    </div>
-                       
-                      <div className="modal-body text-center">
-                      <h3 className="text-center">Congratulations!!</h3>
-                      <p id='respondTime'>You have completed the quiz</p>
-                      <hr/>
-                      <h6 className="text-center">Result</h6>
-                      <hr/>
-                      <h4>{this.state.score}/20</h4>
-                      </div>
-                
-                    
-                    <div className="modal-footer">
-                      <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                    </div>
-              
-                    </div>
-                    </div>
-                    </div>
-
-
-                    </div>
-
-                </div>)
+            </div>)
    }
  }
           
-     const app= ( <div>
+ 
+//function to shuffle array of digits
+const shuffle=(array)=>array.sort(()=>Math.random()-0.5)
+console.log(data)
+const newData=shuffle(data).slice(0,20) 
+
+const App= ()=>( <div>
                <Header info=<p>This is a react app containing many JavaScript 
                interview questions. <br/>it generate twenty questions for you at random in which you are to pick just one option.
                 also it provide good explanation on each question after submission</p>
-               title='Day18: JS Quiz App'/>
-               
-               <App data={newData}/>
+               title='Day18: JS Quiz App'/>               
+               <JavaScriptQuiz data={newData}/>
                <Footer/>
               </div>)
+
+ReactDOM.render(<App/>, document.getElementById('root'));
 
 ReactDOM.render(app, document.getElementById('root'));
 
