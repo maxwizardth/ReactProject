@@ -8,11 +8,12 @@ It has four files named
 
 **Hexadecimal1A:** this was built using functional components with CSS without background pictures.
 
-**Hexadecimal1B:** this was built using functional components with CSS without background
+**Hexadecimal1B:** this was built using functional components with CSS without background pictures. 
+It has only one Hexadecimal code per row.
 
-**Hexadecimal2A:** was built using functional components with CSS without background
+**Hexadecimal2A:** was built using functional components with CSS without background pictures.
 
-**Hexadecimal2B:** was built using functional components with CSS without background
+**Hexadecimal2B:** was built using functional components with CSS without background pictures.
 
 In summary you can build your app base on functional components or class components. 
 
