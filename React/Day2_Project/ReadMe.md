@@ -11,7 +11,7 @@ It has four files named
 **Hexadecimal1B:** this was built using functional components with CSS without background pictures. 
 It has only one Hexadecimal code per row.
 
-**Hexadecimal2A:** was built using functional components with CSS without background pictures.
+**Hexadecimal2A:** was built using functional components with CSS with background pictures. It has one code per row it's similar to 1A only that this one has beautiful background.
 
 **Hexadecimal2B:** was built using functional components with CSS without background pictures.
 
