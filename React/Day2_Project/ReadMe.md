@@ -1,10 +1,10 @@
 This is a Hexidecimal code generator designed usng React. 
 it generate different hexadecimal color codes and shows its colors
 It has four files named
-1. Hexadecimal1A
-2. Hexadecimal1B
-3. Hexadecimal2A
-4. Hexadecimal2B
+1. [Hexadecimal1A](https://maxwizardth.github.io/ReactProject/React/Day2_Project/hexadecimal1A.html)
+2. [Hexadecimal1B](https://maxwizardth.github.io/ReactProject/React/Day2_Project/hexadecimal1B.html)
+3. [Hexadecimal2A](https://maxwizardth.github.io/ReactProject/React/Day2_Project/hexadecimal2A.html)
+4. [Hexadecimal2B](https://maxwizardth.github.io/ReactProject/React/Day2_Project/hexadecimal2B.html)
 
 **Hexadecimal1A:** this was built using functional components with CSS without background pictures.
 
